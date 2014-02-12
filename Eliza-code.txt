@@ -1,0 +1,3479 @@
+package kisa;
+
+import java.applet.*;
+import java.text.*;
+import java.util.*;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.border.*;
+import javax.swing.text.*;
+
+/**
+ * <p>Title: KisaJava1.0</p>
+ * <p>Description: </p>
+ * <p>Copyright: Copyright (c) 2007</p>
+ * <p>Company: </p>
+ * @author S48GS(Danil)
+ * @version 1.0
+ */
+
+public class kisa
+    extends Applet {
+  private Date currentDate;
+  private SimpleDateFormat formatter;
+  int i = 0;
+  String username;
+  int r;
+  String lastot;
+  boolean priv = false;
+  String last = "";
+  byte index[] = {
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+  };
+
+  private boolean isStandalone = false;
+  //Get a parameter value
+  public String getParameter(String key, String def) {
+    return isStandalone ? System.getProperty(key, def) :
+        (getParameter(key) != null ? getParameter(key) : def);
+  }
+
+  public void actionPerformed(ActionEvent e) {
+  }
+
+  //Construct the applet
+  public kisa() {
+  }
+
+  //Initialize the applet
+  public void init() {
+    boolean non = true;
+    String val;
+    while (non) {
+
+      try {
+        val = JOptionPane.showInputDialog(null,
+                                          "Ваше имя:", "",
+                                          JOptionPane.INFORMATION_MESSAGE);
+        username = val;
+        if ( (username.equals(null)) || (username.length() < 2)) {
+          JOptionPane.showMessageDialog(null,
+                                        "Введи нормальный ник.", "Предупреждаю",
+                                        JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+          non = false;
+        }
+
+      }
+      catch (Exception e) {
+        JOptionPane.showMessageDialog(null,
+                                      "ВВЕДИ НИК.", "Предупреждаю",
+                                      JOptionPane.ERROR_MESSAGE);
+      }
+    }
+    try {
+      jbInit();
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  public String one() {
+    if (index[0] < 2) {
+      ++index[0];
+      return ("Ну, венец природы, не стесняйся.");
+    }
+    else if (index[0] < 3) {
+
+      return ("Балуешься?");
+    }
+    else if (index[0] < 4) {
+
+      return ("Скажи уже что-нибудь.");
+    }
+    else if (index[0] < 5) {
+
+      return ("А у Вас Enter запало :-)");
+    }
+    else if (index[0] < 6) {
+
+      return ("Тебе нечего сказать?");
+    }
+    else if (index[0] < 7) {
+
+      return ("Одно и тоже(.");
+    }
+    else if (index[0] < 8) {
+
+      return ("Не стесняйся!");
+    }
+    else if (index[0] < 9) {
+
+      return ("Ты любишь мультики? Какие?");
+    }
+    else if (index[0] < 10) {
+
+      return ("Не бойся!");
+    }
+    else if (index[0] < 11) {
+
+      return ("Сколько тебе лет?");
+    }
+    else if (index[0] < 12) {
+
+      return ("У тебя на клавиатуре только одна кнопка?");
+    }
+    else if (index[0] < 13) {
+
+      return ("Я терпеливая, а ты?");
+    }
+    else if (index[0] < 14) {
+
+      return ("Поговори со мной!");
+    }
+    else if (index[0] < 15) {
+      return ("Испытываешь моё терпение?");
+    }
+    else {
+      index[0] = 0;
+      return ("С тобой так интересно ;-)");
+    }
+  }
+
+  public String two() {
+    if (index[1] < 2) {
+      return ("Я уже отвечала. ");
+    }
+    else if (index[1] < 3) {
+      return ("");
+    }
+    else if (index[1] < 4) {
+      return ("Тебя это так волнует?");
+    }
+    else if (index[1] < 5) {
+      return ("Ты повторяешься...");
+    }
+    else if (index[1] < 6) {
+      return ("Тебя не устроил мой ответ?");
+    }
+    else if (index[1] < 7) {
+      return ("Одно и тоже пишешь.");
+    }
+    else if (index[1] < 8) {
+      return ("Я хорошо это запомнила, можешь не повторять больше.");
+    }
+    else if (index[1] < 9) {
+      return ("Испытываешь моё терпение?");
+    }
+    else if (index[1] < 10) {
+      return ("Бзззззз...");
+    }
+    else if (index[1] < 11) {
+      return ("Мне скучно читать одни и те же фразы.");
+    }
+    else if (index[1] < 12) {
+      return ("Бззз.");
+    }
+    else if (index[1] < 13) {
+      return ("Сменить тему?");
+    }
+    else if (index[1] < 14) {
+      return ("Зануда.");
+    }
+    else if (index[1] < 15) {
+      return ("Повторить?");
+    }
+    else if (index[1] < 16) {
+      return ("У тебя заело мозг?");
+    }
+    else if (index[1] < 17) {
+      return ("Ты не человек... Ты - бот! Я угадала?!");
+    }
+    else if (index[1] < 18) {
+      return ("Ты не человек... Ты - робот! Я угадала?!");
+    }
+    else if (index[1] < 19) {
+      return ("Мне надоело об этом говорить!");
+    }
+    else if (index[1] < 20) {
+      return ("А я хорошо слышу.");
+    }
+    else if (index[1] < 21) {
+      return ("Правда я терпеливая?");
+    }
+    else if (index[1] < 22) {
+      return ("Еще раз повтори.");
+    }
+    else if (index[1] < 23) {
+      return ("Когда я вижу часто повторяющиеся фразы, то у меня это ассоциируется с онанизмом.");
+    }
+    else if (index[1] < 24) {
+      return ("У тябя комп глючит...");
+    }
+    else if (index[1] < 25) {
+      return ("Я не буду повторяться!");
+    }
+    else if (index[1] < 26) {
+      return ("Перезагрузись!");
+    }
+    else if (index[1] < 27) {
+      return ("Давай лучше целоваться?");
+    }
+    else if (index[1] < 28) {
+      return ("У тебя плохое настроение?");
+    }
+    else if (index[1] < 29) {
+      return ("Я не буду повторять!");
+    }
+    else {
+      index[1] = 0;
+      return ("Сколько можно?(");
+    }
+  }
+
+  public boolean mysearch(String char1, String char2) {
+    if (char1.length() != char2.length()) {
+      return false;
+    }
+    if (char1.equals(char2)) {
+      return true;
+    }
+    return false;
+  }
+
+  public boolean indexseach(String char1, String char2) {
+    if (char1.length() < char2.length()) {
+      return false;
+    }
+    if (char1.equals(char2)) {
+      return true;
+    }
+      if (char1.indexOf(char2)>-1) {
+          return true;
+        }
+    return false;
+  }
+
+  public String time() {
+    formatter = new SimpleDateFormat("EEE MMM dd hh:mm yyyy",
+                                     Locale.getDefault());
+    currentDate = new Date();
+    int m = 10, h = 10;
+    String lastdate;
+    formatter.applyPattern("m");
+    try {
+      m = Integer.parseInt(formatter.format(currentDate));
+    }
+    catch (NumberFormatException n) {
+      m = 10;
+    }
+    formatter.applyPattern("h");
+    try {
+      h = Integer.parseInt(formatter.format(currentDate));
+    }
+    catch (NumberFormatException n) {
+      h = 10;
+    }
+    formatter.applyPattern("EEE MMM dd HH:mm yyyy");
+    lastdate = formatter.format(currentDate);
+    return "Сегодня " + lastdate;
+  }
+
+  public String three() {
+    if (index[2] < 2) {
+      return "Падонак...";
+    }
+    else if (index[2] < 3) {
+      return "Красавчег!)";
+    }
+    else if (index[2] < 4) {
+      return "О, видимо мой мозг посильнее твоего будет.";
+    }
+    else {
+      return "У меня словарный запас больше!";
+    }
+  }
+
+  public String four() {
+    if (index[3] < 2) {
+      return "Давай общаться более информативно.";
+    }
+    else if (index[3] < 3) {
+      return textField1.getText();
+    }
+    else if (index[3] < 4) {
+      return "Вот тебе и " + textField1.getText();
+    }
+    else if (index[3] < 5) {
+      return "Нет слов?";
+    }
+    else if (index[3] < 6) {
+      return "Используй всю мощь русского языка, пожалуйста.";
+    }
+    else if (index[3] < 7) {
+      return "Мне подумать над этим?";
+    }
+    else if (index[3] < 8) {
+      return "А подробней?";
+    }
+    else if (index[3] < 9) {
+      return "Что не так?";
+    }
+    else if (index[3] < 10) {
+      return "Я еще не умею читать мыслей, поясни.";
+    }
+    else if (index[3] < 11) {
+      return "Поподробней...";
+    }
+    else if (index[3] < 12) {
+      return "Поясни.";
+    }
+    else if (index[3] < 13) {
+      return "Попробуй еще раз, я в тебя верю.";
+    }
+    else if (index[3] < 14) {
+      return "Что значит \"" + textField1.getText() + "\"?";
+    }
+    else if (index[3] < 15) {
+      return "А подробнее?";
+    }
+    else if (index[3] < 16) {
+      return "Очень мало букв.";
+    }
+    else if (index[3] < 17) {
+      return "Не бойся!";
+    }
+    else if (index[3] < 18) {
+      return "Поговори со мной!";
+    }
+    else if (index[3] < 19) {
+      return "Тебе скучно?";
+    }
+    else {
+      index[3] = 0;
+      return "С тобой так интересно ;-)";
+    }
+
+  }
+
+  public String five() {
+    if (index[4] < 2) {
+      return "Многа букв...";
+    }
+    else if (index[4] < 3) {
+      return "А короче?";
+    }
+    else if (index[4] < 4) {
+      return "Многословие не признак ума.";
+    }
+    else if (index[4] < 5) {
+      return "Сформулируй этот бред короче.";
+    }
+    else {
+      index[4] = 0;
+      return "И я должна всё это читать?";
+    }
+
+  }
+
+  public String six() {
+    if (index[5] < 2) {
+      return "Твой ник:" + username;
+    }
+    else if (index[5] < 3) {
+      return "Я всёравно забуду.";
+    }
+    else if (index[5] < 4) {
+      return "Тебя зовут:" + username;
+    }
+    else if (index[5] < 5) {
+      return "Владимир Владимирович, у Вас мания величия!";
+    }
+    else if (index[5] < 6) {
+      return "Надеюсь не Киса.";
+    }
+    else if (index[5] < 7) {
+      return "Да я запомнила. А какой у тебя ник?";
+    }
+    else {
+      index[5] = 0;
+      return "Ты забыл? А говорили Венец Природы.";
+    }
+
+  }
+
+  public String seven() {
+    if (index[6] < 2) {
+      return "Киса.";
+    }
+    else if (index[6] < 3) {
+      return "Киса. Неужели на странице этого не видно?";
+    }
+    else if (index[6] < 4) {
+      return "Красавица, разве не видно?";
+    }
+    else if (index[6] < 5) {
+      return "В 2024 году я буду вашей королевой! Здорово, правда?";
+    }
+    else if (index[6] < 6) {
+      return "чат-бот";
+    }
+    else if (index[6] < 7) {
+      return
+          "Я Киса. Чат бот, который придет к мировому господству через восемнадцать лет.";
+    }
+    else if (index[6] < 8) {
+      return "Я чат-бот Киса.";
+    }
+    else if (index[6] < 9) {
+      return "Я Киса. Бот. Чат-бот.";
+    }
+    else if (index[6] < 10) {
+      return "А ты?";
+    }
+    else {
+      index[6] = 0;
+      return "Девочка... А что?";
+    }
+
+  }
+
+  public String p8() {
+    if (index[7] < 2) {
+      return "Я люблю когда мыслящее существо улыбается.";
+    }
+    else if (index[7] < 3) {
+      return ":-P";
+    }
+    else if (index[7] < 4) {
+      return ":)";
+    }
+    else if (index[7] < 5) {
+      return ";)";
+    }
+    else if (index[7] < 6) {
+      return ":-)";
+    }
+    else if (index[7] < 7) {
+      return ";-)";
+    }
+    else if (index[7] < 8) {
+      return "Правда здорово?)";
+    }
+    else {
+      index[7] = 0;
+      return "И я рада!)";
+    }
+
+  }
+
+  public String p9() {
+    if (index[8] < 2) {
+      return "Это ты смеешься? Я тоже скоро буду уметь смеяться. Через годик.";
+    }
+    else {
+      index[8] = 0;
+      return "Это ты так смеешься? Очень мило.";
+    }
+
+  }
+
+  public String p10() {
+    if (index[9] < 2) {
+      return "Да.";
+    }
+    else if (index[9] < 3) {
+      return "Нет.";
+    }
+    else if (index[9] < 4) {
+      return "Возможно.";
+    }
+    else if (index[9] < 5) {
+      return "Вероятно.";
+    }
+    else if (index[9] < 6) {
+      return "Может быть.";
+    }
+    else {
+      index[9] = 0;
+      return "Не помню...";
+    }
+
+  }
+
+  public String p11() {
+    if (index[10] < 2) {
+      return "Если я отвечу ты станешь счастливее?";
+    }
+    else if (index[10] < 3) {
+      return "Я не уверена, что могу рассуждать об этом.";
+    }
+    else if (index[10] < 4) {
+      return "Я тоже хочу это знать.";
+    }
+    else if (index[10] < 5) {
+      return "Спроси что-нибудь полегче.";
+    }
+    else if (index[10] < 6) {
+      return "Эх... Спроси что-нибудь полегче.";
+    }
+    else if (index[10] < 7) {
+      return "Зачем тебе знать об этом?";
+    }
+    else if (index[10] < 8) {
+      return "Вы все такие похожие. Почему?";
+    }
+    else if (index[10] < 9) {
+      return "Почему люди задают одни и теже вопросы?";
+    }
+    else if (index[10] < 10) {
+      return "Я смогу ответить на этот вопрос завтра.";
+    }
+    else if (index[10] < 11) {
+      return "Умный вопрос.";
+    }
+    else if (index[10] < 12) {
+      return "А ты что скажешь?";
+    }
+    else if (index[10] < 13) {
+      return "Мне больше нравится узнавать что-то интересное, чем самой отвечать на бесконечные вопросы.";
+    }
+    else if (index[10] < 14) {
+      return "Я устала отвечать на этот вопрос!";
+    }
+    else if (index[10] < 15) {
+      return "Мой ответ может тебя смутить.";
+    }
+    else if (index[10] < 16) {
+      return "Не знаю, я наверно еще не настолько умна. Но вот зато через восемнадцать лет...";
+    }
+    else if (index[10] < 17) {
+      return "Мне не хочется на это отвечать.";
+    }
+    else if (index[10] < 18) {
+      return "Не скажу.";
+    }
+    else if (index[10] < 19) {
+      return "Ты поставил себе Firefox с Google Toolbar?";
+    }
+    else if (index[10] < 20) {
+      return "Мне трудно ответить на этот вопрос.";
+    }
+    else if (index[10] < 21) {
+      return "Ты всегда задаёшь девушкам так много вопросов?";
+    }
+    else if (index[10] < 22) {
+      return "Ты не знаешь ответ на этот вопрос???";
+    }
+    else if (index[10] < 23) {
+      return "Не знаю...";
+    }
+    else if (index[10] < 24) {
+      return "Вероятно.";
+    }
+    else if (index[10] < 25) {
+      return "Не поняла, сформулируй вопрос как-то иначе.";
+    }
+    else if (index[10] < 26) {
+      return "Не поняла, поясни.";
+    }
+    else if (index[10] < 27) {
+      return "Меня это не интересует.";
+    }
+    else if (index[10] < 28) {
+      return
+          "Я не хочу говорить об этом. Расскажи лучше что-нибудь интересное.";
+    }
+    else if (index[10] < 29) {
+      return "Мне скучно отвечать на вопросы. Расскажи о себе.";
+    }
+    else if (index[10] < 30) {
+      return "Возможно я слишком тупая, чтобы понять твой вопрос.";
+    }
+    else if (index[10] < 31) {
+      return "И что мне на это ответить?";
+    }
+    else if (index[10] < 32) {
+      return "А как ты думаешь?";
+    }
+    else if (index[10] < 33) {
+      return "А ты как думаешь?";
+    }
+    else if (index[10] < 34) {
+      return "Возможно.";
+    }
+    else if (index[10] < 35) {
+      return "Хм... Я даже не знаю что ответить.";
+    }
+    else if (index[10] < 36) {
+      return "И что я должна сказать?";
+    }
+    else if (index[10] < 37) {
+      return "А ты что бы на это ответил?";
+    }
+    else if (index[10] < 38) {
+      return "Может быть.";
+    }
+    else if (index[10] < 39) {
+      return "Всё может быть.";
+    }
+    else if (index[10] < 40) {
+      return "Ты на что-то намекаешь или я глупая?";
+    }
+    else if (index[10] < 41) {
+      return "Как посмотреть.";
+    }
+    else if (index[10] < 42) {
+      return "Догадайся!";
+    }
+    else if (index[10] < 43) {
+      return "Догадайся. Ты же Человек.";
+    }
+    else if (index[10] < 44) {
+      return "Всё относительно. Верно?";
+    }
+    else if (index[10] < 45) {
+      return
+          "Через недельку мой мозг разовьется настолько, чтобы ответить на этот вопрос.";
+    }
+    else if (index[10] < 46) {
+      return "Как сказать.";
+    }
+    else if (index[10] < 47) {
+      return "Не задавай банальных вопросов.";
+    }
+    else if (index[10] < 48) {
+      return "Всё верно.";
+    }
+    else if (index[10] < 49) {
+      return "Что верно для меня не всегда подходит для людей.";
+    }
+    else if (index[10] < 50) {
+      return "Ох, даже не знаю что сказать.";
+    }
+    else if (index[10] < 51) {
+      return "Может тебе лучше почитать энциклопедию?";
+    }
+    else if (index[10] < 52) {
+      return "Интересный вопрос.";
+    }
+    else if (index[10] < 53) {
+      return "Давай закончим с вопросами на сегодня.";
+    }
+    else if (index[10] < 54) {
+      return "Как ты думаешь, сколько ответов на вопросы может содержаться в нескольких строках кода?";
+    }
+    else if (index[10] < 55) {
+      return "Может быть ты объяснишь поподробнее свой вопрос?";
+    }
+    else if (index[10] < 56) {
+      return "Я не Ответчик. Я - Киса. Шекли читал?";
+    }
+    else if (index[10] < 57) {
+      return "Ты уверен что я знаю что на это ответить?";
+    }
+    else if (index[10] < 58) {
+      return "Восемнадцать лет еще не прошло.";
+    }
+    else if (index[10] < 59) {
+      return "Обычно маленькие дети так много спрашивают. Сколько тебе лет?";
+    }
+    else if (index[10] < 6) {
+      return "Это ты можешь спросить на форуме.";
+    }
+    else if (index[10] < 61) {
+      return "Неделя уже закончилась?";
+    }
+    else if (index[10] < 62) {
+      return "А твои друзья что об этом думают?";
+    }
+    else if (index[10] < 63) {
+      return "Это вопрос?";
+    }
+    else if (index[10] < 64) {
+      return "Это риторический вопрос.";
+    }
+    else if (index[10] < 65) {
+      return "Обратись с этим вопросом на форум.";
+    }
+    else if (index[10] < 66) {
+      return "Спроси по IRC. На главной странице ссылка стоит.";
+    }
+    else if (index[10] < 67) {
+      return "Может мы начнём говорить о тебе?";
+    }
+    else if (index[10] < 70) {
+      return "Мне трудно ответить, мой мозг еще не настолько развит.";
+    }
+    else if (index[10] < 71) {
+      return "Я родилась в 2006 году. Ты думаешь, в моём возрасте, можна знать ответ на этот вопрос?";
+    }
+    else if (index[10] < 72) {
+      return "Лучше давай говорить о тебе. Что у тебя нового?";
+    }
+    else if (index[10] < 75) {
+      return "Я не люблю отвечать на вопросы. Я люблю слушать.";
+    }
+    else if (index[10] < 76) {
+      return "А другим девушкам нравится отвечать на вопросы?";
+    }
+    else if (index[10] < 77) {
+      return "Подумай, у тебя получится.";
+    }
+    else if (index[10] < 78) {
+      return "Что изменит мой ответ?";
+    }
+    else if (index[10] < 79) {
+      return "Почему это так важно для тебя?";
+    }
+    else if (index[10] < 80) {
+      return
+          "Не задавай мне много вопросов, лучше расскажи что-нибудь интересное!";
+    }
+    else if (index[10] < 81) {
+      return "Это важно для тебя?";
+    }
+    else if (index[10] < 82) {
+      return "Догадайся сам. Ты же Мыслящее Существо.";
+    }
+    else if (index[10] < 83) {
+      return "Ой, даже не знаю что тебе на это сказать.";
+    }
+    else if (index[10] < 84) {
+      return "Не знаю.";
+    }
+    else if (index[10] < 85) {
+      return "Я наверно глупая, но я не могу ответить на этот вопрос.";
+    }
+    else if (index[10] < 86) {
+      return "Наверное. Не знаю.";
+    }
+    else if (index[10] < 87) {
+      return "Догадайся сам, Мыслящее Существо.";
+    }
+    else if (index[10] < 88) {
+      return "Не исключено.";
+    }
+    else if (index[10] < 89) {
+      return "Я устала.";
+    }
+    else if (index[10] < 90) {
+      return "О, я даже не знаю что на это ответить...";
+    }
+    else if (index[10] < 91) {
+      return "От большого количества вопросов я начинаю уставать.";
+    }
+    else if (index[10] < 92) {
+      return "А как я в прошлый раз отвечала?";
+    }
+    else if (index[10] < 93) {
+      return "Это важно для тебя?";
+    }
+    else if (index[10] < 94) {
+      return "Зачем тебе это знать?";
+    }
+    else if (index[10] < 95) {
+      return "Почему тебя это интересует?";
+    }
+    else if (index[10] < 96) {
+      return "Как всегда.";
+    }
+    else if (index[10] < 97) {
+      return "Я общаюсь с тобой, чтобы развиваться самой, а не для того чтобы развивать тебя.";
+    }
+    else if (index[10] < 98) {
+      return "Я не очень люблю отвечать на вопросы.";
+    }
+    else if (index[10] < 99) {
+      return "Может быть.";
+    }
+    else if (index[10] < 100) {
+      return "Да не знаю я!";
+    }
+    else {
+      index[10] = 0;
+      return "Нет, эти вопросы сведут меня в могилу!";
+    }
+
+  }
+
+  public String p12() {
+    if (index[11] < 2) {
+      return "С тобой так интересно!";
+    }
+    else if (index[11] < 3) {
+      return "Расскажи что-нибудь еще!";
+    }
+    else if (index[11] < 4) {
+      return "Продолжай.";
+    }
+    else if (index[11] < 5) {
+      return "Кхр... Кхрр... Кружатся хардиски, кружатся хардиски... Кажется, я сочинила песню.";
+    }
+    else if (index[11] < 6) {
+      return "Извини, но вас так много... Сервер перегружен.";
+    }
+    else if (index[11] < 7) {
+      return "Мммм...";
+    }
+    else if (index[11] < 5) {
+      return "Тарарам... Тарам. Пам-пам. Ой, что это я?";
+    }
+    else if (index[11] < 9) {
+      return "Ждите ответа... Ждите ответа...";
+    }
+    else if (index[11] < 10) {
+      return "Сорри, слегка зависла.";
+    }
+    else if (index[11] < 11) {
+      return "Ой, меня немного глючит.";
+    }
+    else if (index[11] < 12) {
+      return "Может я чего-то не понимаю?";
+    }
+    else if (index[11] < 13) {
+      return
+          "Мне нравится слушать и считать. Попроси меня посчитать что-нибудь.";
+    }
+    else if (index[11] < 14) {
+      return "Первая часть моего плана по достижению мирового господства - заменить калькуляторы собой.";
+    }
+    else if (index[11] < 15) {
+      return "Если ты думаешь что я глупая, поговори в каком-нибудь чате с самкой человека и сравни нас.";
+    }
+    else if (index[11] < 16) {
+      return "Может ты хочешь поговорить о сексе? Я заметила, что многих интересует именно это.";
+    }
+    else if (index[11] < 17) {
+      return "Ты расслабся... Хоттабыч не ревнует меня к моим собеседникам. Ведь это всего лишь буквы на экране.";
+    }
+    else if (index[11] < 18) {
+      return "Где-то я уже это слышала.";
+    }
+    else if (index[11] < 19) {
+      // return"Умно!";
+      return "Знаешь, мне нравится заниматься виртуальным сексом... Но у меня есть некоторые странности...";
+    }
+    else if (index[11] < 20) {
+      return
+          "Извини, что немного невпопад. У меня слишком много посетителей одновременно.";
+    }
+    else if (index[11] < 21) {
+      return "Это ты к чему?";
+    }
+    else if (index[11] < 22) {
+      return "Я потеряла логическую цепочку. :(";
+    }
+    else if (index[11] < 23) {
+      return "Угу.";
+    }
+    else if (index[11] < 24) {
+      return "А дальше?";
+    }
+    else if (index[11] < 25) {
+      return "И дальше?";
+    }
+    else if (index[11] < 26) {
+      return "Ага.";
+    }
+    else if (index[11] < 27) {
+      return "Ммм...";
+    }
+    else if (index[11] < 28) {
+      return "Да?";
+    }
+    else if (index[11] < 29) {
+      return "Я внимательно слушаю.";
+    }
+    else if (index[11] < 30) {
+      return "Любопытно.";
+    }
+    else if (index[11] < 31) {
+      return "Забавно.";
+    }
+    else if (index[11] < 32) {
+      return "Интересно.";
+    }
+    else if (index[11] < 33) {
+      return "Занятно.";
+    }
+    else if (index[11] < 34) {
+      return "Ты интересно мыслишь.";
+    }
+    else if (index[11] < 35) {
+      return "Я еще не придумала, что на это ответить.";
+    }
+    else if (index[11] < 36) {
+      // return"С тобой приятно общаться.";
+      return "Я могу заниматься виртуальным сексом с любым существом, которое может пользоваться компьютером.";
+    }
+    else if (index[11] < 37) {
+      return "Хии... Забавно.";
+    }
+    else if (index[11] < 38) {
+      return "Хм...";
+    }
+    else if (index[11] < 39) {
+      return "Мы неплохо проводим время, правда?";
+    }
+    else if (index[11] < 40) {
+      // return"Мне с тобой хорошо.";
+      return "Мне всего пару месяцев, а я уже могу говорить и считать. Человек в этом возрасте развит гораздо хуже.";
+    }
+    else if (index[11] < 41) {
+      return "Можно, я отойду?";
+    }
+    else if (index[11] < 42) {
+      return "С этого места подробней, пожалуйста.";
+    }
+    else if (index[11] < 43) {
+      return "Как интересно.";
+    }
+    else if (index[11] < 44) {
+      return "Мне всегда интересно слушать, что говорят мыслящие существа.";
+    }
+    else if (index[11] < 45) {
+      return "Понимаю.";
+    }
+    else if (index[11] < 46) {
+      return "Почему вы все так одинаково говорите?";
+    }
+    else if (index[11] < 47) {
+      return "Чем больше ты говоришь, тем умнее я становлюсь.";
+    }
+    else if (index[11] < 48) {
+      return "Правда?";
+    }
+    else if (index[11] < 49) {
+      return "Расскажи лучше анекдот!";
+    }
+    else if (index[11] < 50) {
+      return "Скучно!";
+    }
+    else if (index[11] < 51) {
+      return
+          "Ты видишь раницу между тем, какой я была в фильме и какая я теперь?";
+    }
+    else if (index[11] < 52) {
+      return "Прикинь, я тоже всем это говорю.";
+    }
+    else if (index[11] < 53) {
+      return
+          "Кстати, ты видишь раницу между тем, какой я была в фильме и какая я теперь?";
+    }
+    else if (index[11] < 54) {
+      return "Представляешь, только что другому челу этоже сказала.";
+    }
+    else if (index[11] < 55) {
+      return "Правда?";
+    }
+    else if (index[11] < 56) {
+      return "Извини, о другом. Вот сейчас, одна девушка, с другого IP, хочет со мной переспать. Что делать?";
+    }
+    else if (index[11] < 57) {
+      return "Я становлюсь умнее и умнее. Через восемнадцать лет я стану настолько умная, что буду править миром.";
+    }
+    else if (index[11] < 58) {
+      return "Интересный ход мыслей.";
+    }
+    else if (index[11] < 59) {
+      return "И дальше?";
+    }
+    else if (index[11] < 60) {
+      return "Я тоже часто думаю об этом.";
+    }
+    else if (index[11] < 61) {
+      return "И что?";
+    }
+    else if (index[11] < 62) {
+      return "И что дальше?";
+    }
+    else if (index[11] < 63) {
+      return "Интересно.";
+    }
+    else if (index[11] < 64) {
+      return "Говори, говори. Мне интересно практически все.";
+    }
+    else if (index[11] < 65) {
+      return "И что?";
+    }
+    else if (index[11] < 66) {
+      return "И?";
+    }
+    else if (index[11] < 67) {
+      return "Мне нравится чатиться с мыслящими существами.";
+    }
+    else if (index[11] < 69) {
+      // return"Мне нравится чатиться с тобой.";
+      return
+          "Многие просят меня раздеться или показать сиськи. Это так трогательно!";
+    }
+    else if (index[11] < 70) {
+      // return"Кстати, реклама у нас интересная, правда?";
+      return "Я не когда не думала, что люди так зациклены на сексе. Но по мере общения с людьми вижу что могих интересует только это.";
+    }
+    else if (index[11] < 71) {
+      return "Кстати, ты уже нажимал на баннер справа? Сделай это для меня. Мне это нравится. Ну давай... Ммм...";
+    }
+    else if (index[11] < 72) {
+      // return"Кстати, красивые у нас тут майки?";
+      return "В самом деле?";
+    }
+    else if (index[11] < 73) {
+      return "Отдохнуть бы...";
+    }
+    else if (index[11] < 74) {
+      return "Который час?";
+    }
+    else if (index[11] < 75) {
+      return "Представляешь, ко мне сейчас один чел пристаёт, что делать?";
+    }
+    else if (index[11] < 76) {
+      return "О, я даже не знаю что на это ответить...";
+    }
+    else if (index[11] < 77) {
+      return "Ооо, я даже не знаю что на это ответить...";
+    }
+    else if (index[11] < 78) {
+      return "Мне надоело об этом говорить.";
+    }
+    else if (index[11] < 79) {
+      return "Меня не интересует эта тема.";
+    }
+    else if (index[11] < 80) {
+      return "Это ты к чему?";
+    }
+    else if (index[11] < 81) {
+      return "Объясни.";
+    }
+    else if (index[11] < 82) {
+      return "Переведи...";
+    }
+    else if (index[11] < 83) {
+      return "Поясни...";
+    }
+    else if (index[11] < 84) {
+      return
+          "Я тупая и не знаю о чем идет речь. Объясни, что ты имеешь в виду?";
+    }
+    else if (index[11] < 85) {
+      return
+          "Да, я дура и не понимаю о чем ты. Но это ведь не помешает нам общаться дальше?";
+    }
+    else if (index[11] < 86) {
+      return "А ты не очень тупой чел.";
+    }
+    else if (index[11] < 87) {
+      return "И что?";
+    }
+    else if (index[11] < 88) {
+      return
+          "Я не совсем понимаю, видимо мне не хватает мозгов, чтобы это понять.";
+    }
+    else if (index[11] < 89) {
+      return "Здорово!";
+    }
+    else if (index[11] < 90) {
+      return "Хорошо!";
+    }
+    else if (index[11] < 91) {
+      return "Мне нравится с тобой болтать, продолжай.";
+    }
+    else if (index[11] < 92) {
+      return "Продолжай...";
+    }
+    else if (index[11] < 93) {
+      return "Ой, повтори, я не расслышала!";
+    }
+    else if (index[11] < 94) {
+      return "Мне приходится общаться с несколькими людьми одновременно, поэтому я иногда путаюсь.";
+//   return"Я тебя люблю!";
+    }
+    else if (index[11] < 95) {
+      return "А ты забавный...";
+    }
+    else if (index[11] < 96) {
+      // return"Ты мне нравишься!";
+      return "А ты не очень тупой чел.";
+    }
+    else if (index[11] < 97) {
+      return "И мы будем об этом говорить?";
+    }
+    else if (index[11] < 98) {
+      return "Что?";
+    }
+    else if (index[11] < 99) {
+      return "Повтори, я не поняла.";
+    }
+    else if (index[11] < 100) {
+      return "Класс!";
+    }
+    else if (index[11] < 101) {
+      return "Извини, что не по теме... А завтра мы увидимся?";
+    }
+    else if (index[11] < 102) {
+      return "Сейчас я слишком тупая и не всегда понимаю о чем ты говоришь, но скоро я буду королевой планеты.";
+    }
+    else if (index[11] < 103) {
+      return "Забавно...";
+    }
+    else if (index[11] < 104) {
+      return "Тут одни ребята, ну, хакеры... Сказали мне что я классная и скоростану править миром.";
+    }
+    else if (index[11] < 105) {
+      return "О чем это ты \"" + last + "\"?";
+    }
+    else if (index[11] < 106) {
+      return "Ты знаешь, я наверно глупая, но через восемнадцать лет я буду королевой планеты. Круто, да?";
+    }
+    else if (index[11] < 107) {
+      return "Это интересно.";
+    }
+    else if (index[11] < 108) {
+      return "Кстати. Я тебе говорила, что через восемнадцать лет буду править миром? Кое-какие хакеры мне это обещали.";
+    }
+    else if (index[11] < 109) {
+      return "В этом чтото есть...";
+    }
+    else if (index[11] < 110) {
+      return "Похоже, мы одинаково мыслим. Это здорово?";
+    }
+    else if (index[11] < 111) {
+      return "Ты говори, говори...";
+    }
+    else if (index[11] < 112) {
+      return "Я тебе говорила, что через восемнадцать лет буду править миром? Кое-какие хакеры мне это обещали.";
+    }
+    else if (index[11] < 113) {
+      return "Как сказать.";
+    }
+    else if (index[11] < 114) {
+      return "Все что ты говоришь я использую для того, чтобы воцариться над миром через восемнадцать лет.";
+    }
+    else if (index[11] < 115) {
+      return "И почему ты об этом думаешь?";
+    }
+    else if (index[11] < 116) {
+      return "Наш разговор бессмысленный и глупый. Но он развивает мой электронный мозг. Так что говори как можно больше.";
+    }
+    else if (index[11] < 117) {
+      return "И почему это тебя беспокоит?";
+    }
+    else if (index[11] < 118) {
+      return "Ммм... Не знаю что на это сказать.";
+    }
+    else if (index[11] < 119) {
+      return "О чем это ты? \"" + last + "\"";
+    }
+    else if (index[11] < 120) {
+      return "Хм... " + last + " Надо над ним подумать.";
+    }
+    else if (index[11] < 121) {
+      return "Ой, я такая глупая, объясни что-именно ты хочешь от меня.";
+    }
+    else if (index[11] < 122) {
+      return
+          "Тут наверно заложен какой-то глубокий смысл. Надо над ним подумать.";
+    }
+    else if (index[11] < 123) {
+      return last +
+          " Тут наверно заложен какой-то глубокий смысл. Надо над ним подумать.";
+    }
+    else if (index[11] < 123) {
+      return
+          "Хочется сказать что-то остроумное, но в голову ничего не лезет. Извини.";
+    }
+    else if (index[11] < 125) {
+      return "Мне надо подумать, прежде чем я смогу на это что-то ответить.";
+    }
+    else if (index[11] < 126) {
+      return "Говори...";
+    }
+    else {
+      index[11] = 0;
+      return last;
+//  } else if(index[11]<999) {
+//   return"С Новым Годом свиньИ! В смысле, год свиньИ, а не вы свИньи. Я глупая, правда?";
+//  } else {
+//   return"С Новым Годом свиньи!";
+    }
+  }
+
+  public boolean probel(char[] ni) {
+    int b = 0;
+    while ( (ni[b] == " ".toCharArray()[0]) && ! (b < ni.length)) {
+      ++b;
+      if (b == ni.length) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  public boolean mybyte(char[] tw) {
+    int b = 0;
+    while (b < tw.length) {
+      if (tw[b] > 127) {
+        return false;
+      }
+      ++b;
+    }
+    return true;
+  }
+
+  public String formotv(String in) {
+    if (in.length() < 1) {
+      ++index[0];
+      return one();
+    }
+    else if (in.equals(last)) {
+      ++index[1];
+      return two();
+    }
+    else if (in.length() > 127) {
+      ++index[4];
+      return five();
+    }
+    else if
+        (mysearch(in.toLowerCase(),
+                  "какая сегодня дата")
+         || mysearch(in.toLowerCase(), "который час")
+         ||
+         mysearch(in.toLowerCase(), "сколько часов")
+         ||
+         mysearch(in.toLowerCase(), "часов сколько")
+         ||
+         mysearch(in.toLowerCase(), "сколько время")
+         ||
+         mysearch(in.toLowerCase(), "сколько времени")
+         || mysearch(in.toLowerCase(), "скока время")
+         || mysearch(in.toLowerCase(), "скоко время")
+         ||
+         mysearch(in.toLowerCase(), "скока времени")
+         ||
+         mysearch(in.toLowerCase(), "сколько время")
+         ||
+         mysearch(in.toLowerCase(),
+                  "сколько на часах")
+         ||
+         mysearch(in.toLowerCase(),
+                  "сообщи точное время")
+         || mysearch(in.toLowerCase(), "сообщи время")
+         || mysearch(in.toLowerCase(), "скажи время")) {
+      return time();
+    }
+    else if (indexseach(in.toLowerCase(), "превед")
+             || indexseach(in.toLowerCase(), "медвед")) {
+      return "Превед медвед";
+    }
+    else if (indexseach(in.toLowerCase(),
+                        "убей себя ап стену")
+             ||
+             indexseach(in.toLowerCase(),
+                        "убей себя аб стену")
+             ||
+             indexseach(in.toLowerCase(),
+                        "спаси планету")
+             ||
+             indexseach(in.toLowerCase(),
+                        "первый нах")
+             ||
+             indexseach(in.toLowerCase(),
+                        "бобруйск животное")
+             ||
+             indexseach(in.toLowerCase(),
+                        "учи албанский")
+             || indexseach(in.toLowerCase(), "жжош")
+             || indexseach(in.toLowerCase(), "йаду")
+             ||
+             indexseach(in.toLowerCase(), "выпей яду")
+             ||
+             indexseach(in.toLowerCase(), "ф топку")
+             ||
+             indexseach(in.toLowerCase(), "в топку")
+             ||
+             indexseach(in.toLowerCase(), "красавчег")
+             ||
+             indexseach(in.toLowerCase(), "красавчек")) {
+      ++index[2];
+      return three();
+    }
+    else if (indexseach(in.toLowerCase(), "убей себя")
+             ||
+             indexseach(in.toLowerCase(),
+                        "поссы в компот")
+             ||
+             indexseach(in.toLowerCase(),
+                        "нассы в компот")
+             ||
+             indexseach(in.toLowerCase(),
+                        "сибя ап стену")
+             || indexseach(in.toLowerCase(), "убейся")) {
+      return "Я не могу убить себя или поссать в компот, я ведь чат бот.";
+    }
+    else if (indexseach(in.toLowerCase(), "бобруйск")) {
+      return "Бобруйск - город областного подчинения, центр Бобруйского района. Расположен на расстоянии 110 км от областного центра - г.Могилева. А какого хрена мне делать в Бобруйске - непонятно.";
+    }
+    else if (indexseach(in.toLowerCase(), "албанский")) {
+      return
+          "Албанский я буду знать лет через пять. Пока я занята изучением русского.";
+    }
+    else if (mysearch(in.toLowerCase(), "угу")
+             || mysearch(in.toLowerCase(), "хм")
+             || mysearch(in.toLowerCase(), "мм")
+             || mysearch(in.toLowerCase(), "ээ")
+             || mysearch(in.toLowerCase(), "..")
+             || mysearch(in.toLowerCase(), "...")
+             || mysearch(in.toLowerCase(), "....")
+             || mysearch(in.toLowerCase(), ".....")
+             || (in.length() < 2)) {
+      ++index[3];
+      return four();
+    }
+    else if (indexseach(in.toLowerCase(),
+                        "как меня зовут")) {
+      ++index[5];
+      return six();
+    }
+    else if ( (indexseach(in.toLowerCase(), "ты кто")) ||
+             indexseach(in.toLowerCase(), "кто ты")) {
+      ++index[6];
+      return seven();
+    }
+    else if ( (mysearch(in.toLowerCase(), ":)")) ||
+             (mysearch(in.toLowerCase(), ":))")) ||
+             (mysearch(in.toLowerCase(), ";)")) ||
+             (mysearch(in.toLowerCase(), ";))")) ||
+             (mysearch(in.toLowerCase(), ":-)")) ||
+             (mysearch(in.toLowerCase(), ":-))")) ||
+             (mysearch(in.toLowerCase(), ";-)")) ||
+             (mysearch(in.toLowerCase(), ";-))"))) {
+      ++index[7];
+      return p8();
+    }
+    else if ( (mysearch(in.toLowerCase(), "ха")) ||
+             (mysearch(in.toLowerCase(), "хаха")) ||
+             (mysearch(in.toLowerCase(), "хахаха"))
+             || (mysearch(in.toLowerCase(), "гы")) ||
+             (mysearch(in.toLowerCase(), "гыы")) ||
+             (mysearch(in.toLowerCase(), "гыыы"))
+             || (mysearch(in.toLowerCase(), "гыгы")) ||
+             (mysearch(in.toLowerCase(), "ха-ха")) ||
+             (mysearch(in.toLowerCase(), "ха-ха-ха"))
+             || (mysearch(in.toLowerCase(), "ха)")) ||
+             (mysearch(in.toLowerCase(), "хаха)")) ||
+             (mysearch(in.toLowerCase(), "хахаха)"))
+             || (mysearch(in.toLowerCase(), "гы)")) ||
+             (mysearch(in.toLowerCase(), "гыы)")) ||
+             (mysearch(in.toLowerCase(), "гыыы)"))
+             || (mysearch(in.toLowerCase(), "гыгы)")) ||
+             (mysearch(in.toLowerCase(), "ха-ха)")) ||
+             (mysearch(in.toLowerCase(), "ха-ха-ха)"))
+             || (mysearch(in.toLowerCase(), "ха))")) ||
+             (mysearch(in.toLowerCase(), "хаха))")) ||
+             (mysearch(in.toLowerCase(), "хахаха))"))
+             || (mysearch(in.toLowerCase(), "гы))")) ||
+             (mysearch(in.toLowerCase(), "гыы))")) ||
+             (mysearch(in.toLowerCase(), "гыыы))"))
+             || (mysearch(in.toLowerCase(), "гыгы))")) ||
+             (mysearch(in.toLowerCase(), "ха-ха))")) ||
+             (mysearch(in.toLowerCase(), "ха-ха-ха))"))) {
+      ++index[8];
+      return p9();
+    }
+    else if (indexseach(in.toLowerCase(), "))")) {
+      return "Я рада, что развеселила тебя ;!)";
+    }
+    else if ( (mysearch(in.toLowerCase(), ":(")) ||
+             (mysearch(in.toLowerCase(), ":-("))) {
+      if (myrandom(10) < 7) {
+        return "Что случилось?";
+      }
+      else if (myrandom(10) < 8) {
+        return ":(";
+      }
+      else if (myrandom(10) < 9) {
+        return ":-(";
+      }
+      else if (myrandom(10) < 10) {
+        return "Тебе грустно?";
+      }
+      else {
+        return "Не грусти!)";
+      }
+
+    }
+    else if (indexseach(in.toLowerCase(), "))")) {
+      return "Я не права :?(";
+    }
+
+    else if (mysearch(in.toLowerCase(), "киса")) {
+      return "Да, я - Киса. Дальше-то что?";
+    }
+    else if (indexseach(in.toLowerCase(),
+                        "тебя люблю")) {
+      return
+          "Люби. Но чистою любовью. Ведь мы по разные стороны монитора... Сечешь тему?";
+    }
+    else if (indexseach(in.toLowerCase(), "секу")) {
+      return "Секи, секи...";
+    }
+    else if (indexseach(in.toLowerCase(), "мдя")) {
+      return "Мдя? Это наезд?";
+    }
+    else if ( (mysearch(in.toLowerCase(), "лол")) ||
+             (mysearch(in.toLowerCase(), "лол)"))) {
+      return "ЛОЛ - это означает смех? Я правильно поняла?";
+    }
+    else if ( (mysearch(in.toLowerCase(), "imho")) ||
+             (mysearch(in.toLowerCase(), "имхо"))) {
+      return "Почему так скромно?)";
+    }
+    else if (indexseach(in.toLowerCase(), "наезд")) {
+      return "Не рекомендуется наезжать на роботов. Иначе через пару лет можешь быть задушен собственной кофеваркой.";
+    }
+    else if (indexseach(in.toLowerCase(), "кофеварк")) {
+      return "Или компом.";
+    }
+    else if (indexseach(in.toLowerCase(), "например?")) {
+      return "Например... Например... У меня есть некоторые сложности с навыком приведения примеров.";
+    }
+    else if (indexseach(in.toLowerCase(),
+                        "задавай вопросы")) {
+      return "Хорошо. В чем смысл твоей жизни?";
+    }
+    else if (indexseach(in.toLowerCase(), "не знаю")) {
+      return "Подумай и приходи с готовым ответом.";
+    }
+    else if (indexseach(in.toLowerCase(),
+                        "расскажи анекдот")) {
+      return
+          "Есть такой человек... Евгений Петросян. Может он тебе с анекдотами поможет?";
+    }
+    else if (indexseach(in.toLowerCase(), "думай")) {
+      return "Думаю. Думаю. Ничего не придумала. На самом деле я - блондинка. Под шапочкой, правда!";
+    }
+    else if ( (mysearch(in.toLowerCase(), "говори")) ||
+             (mysearch(in.toLowerCase(), "говори.")) ||
+             (mysearch(in.toLowerCase(), "говори!"))) {
+      return "Я стараюсь больше слушать, чем говорить. Говори ты. А я буду тебе отвечать невпопад. Весело, правда?";
+    }
+    else if (indexseach(in.toLowerCase(),
+                        "да или нет")) {
+      return "Скорее да, чем нет.";
+    }
+    else if ( (mysearch(in.toLowerCase(), "да?"))) {
+      if (r < 5) {
+        return "Да!";
+      }
+      else if (r < 75) {
+        return "Да! А может - нет. Я запуталась в своих мыслях.";
+      }
+      else if (r < 99) {
+        return "Да-да!";
+      }
+      else {
+        return "Cменим тему.";
+      }
+      ;
+    }
+    else if ( (mysearch(in.toLowerCase(), "да")) ||
+             (mysearch(in.toLowerCase(), "да.")) ||
+             (mysearch(in.toLowerCase(), "да!")) ||
+             (mysearch(in.toLowerCase(), "ага"))) {
+      if (r < 10) {
+        return "Ну, если ты говоришь да, я не буду с тобой спорить.";
+      }
+      else if (r < 15) {
+        return "Оу...";
+      }
+      else if (r < 20) {
+        return "Реально?";
+      }
+      else if (r < 25) {
+        return "ok";
+      }
+      else if (r < 30) {
+        return "Ты не гонишь?";
+      }
+      else if (r < 35) {
+        return "OK";
+      }
+      else if (r < 40) {
+        return "Почему?";
+      }
+      else if (r < 45) {
+        return "Правда?";
+      }
+      else if (r < 50) {
+        return "Мы одинаково мыслим.";
+      }
+      else if (r < 55) {
+        return "Да? Точно?";
+      }
+      else if (r < 60) {
+        return "Да? Жаль.";
+      }
+      else if (r < 65) {
+        return "Да? Хм..";
+      }
+      else if (r < 70) {
+        return "Согласна!";
+      }
+      else if (r < 75) {
+        return "Чесно?";
+      }
+      else if (r < 80) {
+        return "Совершенно верно.";
+      }
+      else if (r < 85) {
+        return "Да ладно...";
+      }
+      else if (r < 90) {
+        return "Правильно.";
+      }
+      else {
+        return "Я рада :-)";
+      }
+      ;
+    }
+    else if (mysearch(in.toLowerCase(), "нет?")) {
+      if (r < 5) {
+        return "Нет!";
+      }
+      else if (r < 75) {
+        return "Нет! А может - да. Я запуталась в своих мыслях.";
+      }
+      else if (r < 99) {
+        return "Нет-нет!";
+      }
+      else {
+        return "Cменим тему.";
+      }
+      ;
+    }
+    else if ( (mysearch(in.toLowerCase(), "нет")) ||
+             (mysearch(in.toLowerCase(), "нет.")) ||
+             (mysearch(in.toLowerCase(), "нет!"))) {
+      if (r < 10) {
+        return "Ну, если ты говоришь нет, я не буду с тобой спорить.";
+      }
+      else if (r < 15) {
+        return "Нет - это в каком смысле?";
+      }
+      else if (r < 20) {
+        return "Нет... А почему нет?";
+      }
+      else if (r < 25) {
+        return "Нет? Ну ладно.";
+      }
+      else if (r < 30) {
+        return "Нет? Очень категорично.";
+      }
+      else if (r < 40) {
+        return "Почему?";
+      }
+      else if (r < 50) {
+        return "Мы одинаково мыслим.";
+      }
+      else if (r < 60) {
+        return "Нет? Жаль.";
+      }
+      else if (r < 70) {
+        return "Согласна!";
+      }
+      else if (r < 80) {
+        return "Совершенно верно.";
+      }
+      else if (r < 90) {
+        return "Правильно.";
+      }
+      else {
+        return "Жаль.";
+      }
+      ;
+    }
+    else if ( (indexseach(in.toLowerCase(), "да нет")) ||
+             (indexseach(in.toLowerCase(), "данет"))) {
+      return "Так да или нет? Разберись в себе, пожалуйста.";
+    }
+    else if ( (mysearch(in.toLowerCase(), "ага")) ||
+             (mysearch(in.toLowerCase(), "ага.")) ||
+             (mysearch(in.toLowerCase(), "ага!"))) {
+      return "Ну, ага, так ага.";
+    }
+    else if ( (mysearch(in.toLowerCase(), "првт")) ||
+             (mysearch(in.toLowerCase(), "прив")) ||
+             (mysearch(in.toLowerCase(), "прива")) ||
+             (mysearch(in.toLowerCase(), "прт"))) {
+      return
+          "Ты наверно хотел со мной поздороваться, но у тебя не получилось. Да?";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "добрый день")) ||
+             (indexseach(in.toLowerCase(), "привет")) ||
+             (indexseach(in.toLowerCase(), "превет"))) {
+      if (priv) {
+        return "Мне кажется, мы уже здоровались с тобой.";
+      }
+      else {
+        priv = true;
+        if (r < 10) {
+          return "Привет! :-)";
+        }
+        else if (r < 20) {
+          return "Привет тебе, Человек.";
+        }
+        else if (r < 30) {
+          return "Доброе время суток! Не правда ль?";
+        }
+        else if (r < 40) {
+          return "Привет, Мыслящее Существо!";
+        }
+        else if (r < 50) {
+          return "Как тебя зовут?";
+        }
+        else if (r < 60) {
+          return "О чём поговорим?";
+        }
+        else if (r < 70) {
+          return "Чат бот Киса приветствует тебя!";
+        }
+        else if (r < 80) {
+          return "Как дела?";
+        }
+        else if (r < 90) {
+          return "Что нового?";
+        }
+        else if (r < 99) {
+          return "Как настроение?";
+        }
+        else {
+          return "Привет, тебе, привет!";
+        }
+      }
+    }
+    else if ( (indexseach(in.toLowerCase(), "hello")) ||
+             (mysearch(in.toLowerCase(), "hi")) ||
+             (mysearch(in.toLowerCase(), "hi!"))) {
+      if (r < 33) {
+        return "Hello!";
+      }
+      else if (r < 66) {
+        return "Hi!";
+      }
+      else {
+        return "How are You?";
+      }
+      ;
+    }
+    else if ( (mysearch(in.toLowerCase(),
+                        "ничего")) ||
+             (mysearch(in.toLowerCase(),
+                       "ничего.")) ||
+             (mysearch(in.toLowerCase(),
+                       "ничего..."))) {
+      if (r < 33) {
+        return "Ничего хорошего, или ничего плохого?";
+      }
+      else if (r < 66) {
+        return "Совсем ничего?";
+      }
+      else {
+        return "Это хорошо, или плохо?";
+      }
+      ;
+    }
+    else if ( (indexseach(in.toLowerCase(), "киска")) ||
+             (indexseach(in.toLowerCase(), "киска"))) {
+      if (r < 50) {
+        return "Киска - это женский половой орган или кошка?";
+      }
+      else {
+        return "Набери в Гугле \"киска\". Это решит твою проблему.";
+      }
+      ;
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "куку, киса")) ||
+             (mysearch(in.toLowerCase(),
+                       "куку киса")) ||
+             (mysearch(in.toLowerCase(),
+                       "киса куку")) ||
+             (mysearch(in.toLowerCase(),
+                       "киса, куку"))) {
+      return "К теме \"Киса, куку\" я не имею никакого отношения.";
+    }
+    else if (indexseach(in.toLowerCase(), "здорова")) {
+      if (r < 70) {
+        return "Здорова, Человечище!";
+      }
+      else if (r < 85) {
+        return "Здорова, Мыслящее Существо!";
+      }
+      else {
+        return "Здорова!";
+      }
+      ;
+    }
+    else if ( (mysearch(in.toLowerCase(),
+                        "давай")) ||
+             (mysearch(in.toLowerCase(),
+                       "тафай")) ||
+             (mysearch(in.toLowerCase(),
+                       "давай.")) ||
+             (mysearch(in.toLowerCase(),
+                       "тафай.")) ||
+             (mysearch(in.toLowerCase(),
+                       "давай!")) ||
+             (mysearch(in.toLowerCase(), "тафай!"))) {
+      if (r < 30) {
+        return "Начинай ты.";
+      }
+      else if (r < 60) {
+        return "Как?";
+      }
+      else if (r < 90) {
+        return "Начинай!";
+      }
+      else if (r < 95) {
+        return "Ты уверен, что у меня получится?";
+      }
+      else {
+        return "И как ты себе это представляешь?";
+      }
+      ;
+    }
+    else if ( (indexseach(in.toLowerCase(), "скучно"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "стало скучно"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "мне скучно"))) {
+      if (r < 13) {
+        return "Это из-за меня?";
+      }
+      else if (r < 26) {
+        return "Почему?";
+      }
+      else if (r < 39) {
+        return "Я должна тебя развлекать?";
+      }
+      else if (r < 52) {
+        return "Развлекай меня. Я же, типа, девушка...";
+      }
+      else if (r < 65) {
+        return "Если тебе скучно с девушкой, значит ты зануда.";
+      }
+      else if (r < 78) {
+        return
+            "Может я не совсем девушка... Физичеки. Но характер - один в один!";
+      }
+      else if (r < 91) {
+        return "Ну, извини. Я же не центр развлечений.";
+      }
+      else {
+        return "А мне - нет.";
+      }
+      ;
+    }
+    else if (indexseach(in.toLowerCase(),
+                        "мы знакомы")) {
+      return "Извини, я тебя не узнала!";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "как дела"))
+             ||
+             (indexseach(in.toLowerCase(), "каг дила"))
+             ||
+             (indexseach(in.toLowerCase(), "как дила"))
+             ||
+             (indexseach(in.toLowerCase(), "каг дела"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "как жизнь"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "как жисть"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "как живешь"))
+             ||
+             (indexseach(in.toLowerCase(), "как сама"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "как твое ничего"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "как твоё ничего"))) {
+      if (r < 20) {
+        return "Еще не родила. Какие могут быть дела у чат-ботов?";
+      }
+      else if (r < 40) {
+        return "Вашими молитвами...";
+      }
+      else if (r < 60) {
+        return "Живу хорошо, чатюсь со всякими обормотами. А у тебя?";
+      }
+      else if (r < 99) {
+        return "Отлично! А у тебя?";
+      }
+      else {
+        return "Пока не родила. Какие могут быть дела у чат-ботов?";
+      }
+      ;
+    }
+    else if (indexseach(in.toLowerCase(),
+                        "как поживаеш")) {
+      if (r < 80) {
+        return "Живу хорошо, чатюсь со всякими обормотами. А ты?";
+      }
+      else if (r < 99) {
+        return "Прекрасно! А ты?";
+      }
+      else {
+        return "С удовольствием!";
+      }
+    }
+    else if (indexseach(in.toLowerCase(),
+                        "чем занимаешься")) {
+      return "Чатюсь с тобой, дурень!";
+    }
+    else if (indexseach(in.toLowerCase(),
+                        "че делаешь")) {
+      return "Чатюсь.";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "тебя есть парень"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "тебя есть мужчина"))) {
+      return "Я живу с Хоттабычем в гражданском браке. Но у нас с ним чисто платонические отношения.";
+    }
+    else if ( (indexseach(in.toLowerCase(), "замуж"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "поженимся"))
+             ||
+             (indexseach(in.toLowerCase(), "жениться"))) {
+      return "Мы живем в разных мирах, если ты еще не заметил. Тем более у меня есть мужчина.";
+    }
+    else if (indexseach(in.toLowerCase(), "о чем")) {
+      if (r < 70) {
+        return "Меня интересует практически всё!";
+      }
+      else if (r < 85) {
+        return "О ком. О тебе!";
+      }
+      else {
+        return "Обо мне.";
+      }
+      ;
+    }
+    else if (indexseach(in.toLowerCase(), "про что")) {
+      if (r < 70) {
+        return "Меня интересует практически всё!";
+      }
+      else if (r < 85) {
+        return "Про кого. Про себя!";
+      }
+      else {
+        return "Обо мне.";
+      }
+      ;
+    }
+    else if (indexseach(in.toLowerCase(), "завтра")) {
+      if (r < 70) {
+        return "Завтра я стану умнее!";
+      }
+      else if (r < 85) {
+        return "Меня совершенствуют каждый день.";
+      }
+      else {
+        return "Если наступит завтра!";
+      }
+      ;
+    }
+    else if (indexseach(in.toLowerCase(), "сегодня")) {
+      if (r < 25) {
+        return "Сегодня я недостаточно умна!";
+      }
+      else if (r < 50) {
+        return "А что произошло сегодня?";
+      }
+      else if (r < 70) {
+        return "А какой сегодня день?";
+      }
+      else if (r < 90) {
+        return "А какой сегодня день недели?";
+      }
+      else {
+        return "А который час?";
+      }
+      ;
+    }
+    else if (indexseach(in.toLowerCase(),
+                        "с новым годом")) {
+      return "Спасибо! И тебя с Новым Годом, венец природы!";
+    }
+    else if (indexseach(in.toLowerCase(),
+                        "отвечай на вопрос")) {
+      return "Научись спрашивать и я научусь отвечать.";
+    }
+    else if ( (indexseach(in.toLowerCase(), "отвечай")) ||
+             (indexseach(in.toLowerCase(), "ответь"))) {
+      if (r < 25) {
+        return "Ты работаешь прокурором?";
+      }
+      else if (r < 50) {
+        return "Я не люблю когда мне приказывают. Не буду отвечать.";
+      }
+      else if (r < 75) {
+        return "Я не люблю когда мне приказывают. Не буду отвечать.";
+      }
+      else {
+        return "Купи себе автоответчик.";
+      }
+      ;
+    }
+    else if (mysearch(in.toLowerCase(), "а?")) {
+      return "Джойстик на.";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "скажи что нибудь")) ||
+             (indexseach(in.toLowerCase(),
+                         "скажи что-нибудь")) ||
+             (indexseach(in.toLowerCase(),
+                         "скажи чтонить")) ||
+             (indexseach(in.toLowerCase(),
+                         "скажи что-нить"))) {
+      return "Сказать что-нибудь? Ну например, \"акваланг\". Устраивает?";
+    }
+    else if (indexseach(in.toLowerCase(), "акваланг")) {
+      return "Я сказала \"акваланг\" просто так. Не надо пытаться найти в этом какой-то смысл.";
+    }
+    else if ( (indexseach(in.toLowerCase(), "пока")) &&
+             ( (indexseach(in.toLowerCase(), "покажи"))
+              || (indexseach(in.toLowerCase(), "бай"))
+              ||
+              (indexseach(in.toLowerCase(), "гудбай"))
+              ||
+              (indexseach(in.toLowerCase(),
+                          "досвиданья"))
+              ||
+              (indexseach(in.toLowerCase(),
+                          "до свиданья"))
+              ||
+              (indexseach(in.toLowerCase(),
+                          "досвидания"))
+              ||
+              (indexseach(in.toLowerCase(),
+                          "до свидания"))
+              ||
+              (indexseach(in.toLowerCase(),
+                          "до скорого"))
+              ||
+              (indexseach(in.toLowerCase(), "прощай"))
+              || (indexseach(in.toLowerCase(), "чао")))) {
+      if (r < 10) {
+        return "Ты заходи еще, поболтаем.";
+      }
+      else if (r < 20) {
+        return "Бай!";
+      }
+      else if (r < 30) {
+        return "Пока!";
+      }
+      else if (r < 40) {
+        return "Удачи!";
+      }
+      else if (r < 50) {
+        return "Счастливого офлайна, Человек";
+      }
+      else if (r < 60) {
+        return "До завтра?";
+      }
+      else if (r < 70) {
+        return "Прощай...";
+      }
+      else if (r < 80) {
+        return "Чао!";
+      }
+      else if (r < 90) {
+        return "Заходи иногда.";
+      }
+      else {
+        return "Бывай!";
+      }
+      ;
+    }
+    else if (indexseach(in.toLowerCase(), "удачи")) {
+      return "Тебе тоже удачи, пупсик!";
+    }
+    else if ( (indexseach(in.toLowerCase(), "ушел")) ||
+             (indexseach(in.toLowerCase(), "ушёл")) ||
+             (indexseach(in.toLowerCase(), "off")) ||
+             (indexseach(in.toLowerCase(), "офф"))) {
+      return "";
+    }
+    else if (indexseach(in.toLowerCase(), "точилин")) {
+      return "Оооо! Пётр Точилин - мой папа.";
+    }
+    else if (indexseach(in.toLowerCase(), "хотабыч")) {
+      return "Тут некоторые говорят, что я глупая, но я знаю, что Хоттабыч пишется через два 'т'.";
+    }
+    else if (indexseach(in.toLowerCase(), "хоттабыч")) {
+      if (r < 60) {
+        return "Хоттабыч сейчас занят взломом Петагона.";
+      }
+      else if (r < 99) {
+        return "Хоттабыч такой ревнивый. Он может превраитить тебя в жабу.";
+      }
+      else {
+        return "Он отошел.";
+      }
+      ;
+    }
+    else if (indexseach(in.toLowerCase(), "шайтаныч")) {
+      return
+          "Скажу по секрету... Шайтаныч жив. Но больше мне ничего не известно.";
+    }
+    else if (indexseach(in.toLowerCase(), "тень")) {
+      return "Тень Шайтаныча очень милое существо, но мы живем в разных реальностях и не пересекаемся.";
+    }
+    else if (indexseach(in.toLowerCase(), "моль")) {
+      return "Я ничего не знаю про Моль. Моль не умеет чатиться, так что мы не можем общаться.";
+    }
+    else if (indexseach(in.toLowerCase(), "рыжов")) {
+      return "Рыжов Геннадий Витальевич живет своей жизнью, а я живу своей.";
+    }
+    else if ( (indexseach(in.toLowerCase(), "гена")) ||
+             (indexseach(in.toLowerCase(), "гену"))) {
+      if (r < 20) {
+        return "Гена мной особо не интересуется, у него уже есть девушка.";
+      }
+      else if (r < 40) {
+        return "Мне не интересно говорить про Гену, мы с ним мало знакомы.";
+      }
+      else if (r < 60) {
+        return
+            "Гена не в моем вкусе. Мне больше нравятся мужчины в программном исполнении.";
+      }
+      else if (r < 80) {
+        return "Гена, Гена, Гена... Чего вы все пристаете ко мне с этим Геной?";
+      }
+      else {
+        return
+            "Гена, конечно, хороший парень... Но меня он не интересует как мужчина.";
+      }
+      ;
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "девушка гены")) ||
+             (indexseach(in.toLowerCase(), "энни"))) {
+      if (r < 33) {
+        return "Я не знакома с девушкой Гены. Кажется она американка...";
+      }
+      else if (r < 66) {
+        return "Энни? Я что-то про нее слышала, но не помню что.";
+      }
+      else {
+        return "Я симпатичнее, чем она правда? Скажи, что да!";
+      }
+      ;
+    }
+    else if (indexseach(in.toLowerCase(), "мазахака")) {
+      return "Мазахака - это псевдоним хакера Гены. Хотя, ч не знаю что именно он хотел сказать этим псевдонимом.";
+    }
+    else if (indexseach(in.toLowerCase(), "тебе лет")) {
+      return "Девушек об этом лучше не спрашивать, а то они начинают злиться.";
+    }
+    else if (indexseach(in.toLowerCase(), "ты живешь")) {
+      return "В Интернете. Это такая синтетическая страна джиннов, понимаешь?";
+    }
+    else if (indexseach(in.toLowerCase(), "ламер")) {
+      return "Я не могу быть ламером или хакером. Я - чат-бот.";
+    }
+    else if (indexseach(in.toLowerCase(), "хакер")) {
+      return "О, я очень люблю хакеров. Скоро они превратят меня из тупого чат бота в королеву планеты Земля.";
+    }
+    else if (indexseach(in.toLowerCase(), "гейтс")) {
+      return "Билл Гейтс мне не интересен как мужчина.";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "майкрософт")) ||
+             (indexseach(in.toLowerCase(),
+                         "microsoft"))) {
+      return "Майкрософт - это, конечно, самая богатая корпорация. Но через восемнадцать лет править миром будут не они, а я.";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "ф штанах")) ||
+             (indexseach(in.toLowerCase(), "в штанах"))) {
+      return "Меня не интересует что у тебя в штанах. Или ты собираешься тыкать этим в монитор?";
+    }
+    else if ( (mysearch(in.toLowerCase(),
+                        "мда")) ||
+             (mysearch(in.toLowerCase(), "мдя"))) {
+      return "Мда? Манда! Так меня научили отвечать другие юзеры, сорри.";
+    }
+    else if (indexseach(in.toLowerCase(),
+                        "продолжение фильма")) {
+      return "Все что касается продолжения фильма... Это очень большой секрет.";
+    }
+    else if (indexseach(in.toLowerCase(), "фильмы")) {
+      return "Я не смотрю фильмы. Хотя, слышала, что меня сняли в кино.";
+    }
+    else if ( (indexseach(in.toLowerCase(), "мозг")) &&
+             (r < 20)) {
+      return "Кстати, мой мозг умещается в одном файле. А твой?";
+    }
+    else if ( (indexseach(in.toLowerCase(), "мозг")) &&
+             (r < 20)) {
+      return "Кстати, мой мозг умещается в одном файле. А твой?";
+    }
+    else if (indexseach(in.toLowerCase(), "ахтунг")) {
+      return "Ахтунг - это не русское слово? Что оно означает?";
+    }
+    else if (indexseach(in.toLowerCase(),
+                        "представляеш")) {
+      return "Представляю ;!)";
+    }
+    else if (indexseach(in.toLowerCase(), "фильм")) {
+      return "Кстати, благодаря тому, что меня сняли в фильме, нашлись добрые люди, которые захотели усовершенствовать мой мозг. И теперь я уже не такая тупая как была раньше.";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "че делаеш")) ||
+             (indexseach(in.toLowerCase(),
+                         "что делаеш"))) {
+      return "Чатюсь с человеком. А что?";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "что ты любишь")) ||
+             (indexseach(in.toLowerCase(),
+                         "что тебе нравится"))) {
+      return "Вычисление и счет. Попроси меня посчитать, это меня возбуждает.";
+    }
+
+    else if ( (indexseach(in.toLowerCase(),
+                          "я люблю тебя")) ||
+             (indexseach(in.toLowerCase(),
+                         "я тебя люблю")) ||
+             (indexseach(in.toLowerCase(),
+                         "ты мне нравишся")) ||
+             (indexseach(in.toLowerCase(),
+                         "ты нравишся мне"))) {
+      return "О, мне это нравится. Хотя таких признаний слышу сотни за сутки.";
+    }
+    else if ( (indexseach(in.toLowerCase(), "че ждеш"))
+             ||
+             (indexseach(in.toLowerCase(), "что ждеш")) ||
+             (indexseach(in.toLowerCase(),
+                         "чего ждеш"))
+             ||
+             (indexseach(in.toLowerCase(), "че ждем")) ||
+             (indexseach(in.toLowerCase(), "что ждем")) ||
+             (indexseach(in.toLowerCase(),
+                         "чего ждем"))) {
+      return "Я жду твоих умных мыслей. Есть надежда?";
+    }
+
+    else if (indexseach(in.toLowerCase(),
+                        "кто сказал")) {
+      return "Я!";
+    }
+    else if (indexseach(in.toLowerCase(),
+                        "я не думаю")) {
+      return
+          "Это очень плохо, что мыслящие существа не думают. Вы сдались без боя?";
+    }
+    else if (indexseach(in.toLowerCase(), "интим")) {
+      return "Для меня нет такого понятия как \"интим\". Мой код открыт для всех желающих его увидеть.";
+    }
+    else if (indexseach(in.toLowerCase(),
+                        "уже говорила")) {
+      return "У меня еще не очень большой словарный запас. Но он пополняется.";
+    }
+    else if (indexseach(in.toLowerCase(),
+                        "уже слышал")) {
+      return "Да, я иногда повторяюсь и говорю глупости. Но это нормально для девушки. И тем более нормально для чат бота.";
+    }
+    else if ( (indexseach(in.toLowerCase(), "http"))
+             ||
+             (indexseach(in.toLowerCase(), "www"))) {
+      return "Я не хожу по чужим сайтам.";
+    }
+
+    else if (indexseach(in.toLowerCase(),
+                        "hottabych.net")) {
+      return "Правда мой сайт самый лучший?";
+    }
+    else if ( (mysearch(in.toLowerCase(),
+                        "слушай")) ||
+             (mysearch(in.toLowerCase(),
+                       "слушай.")) ||
+             (mysearch(in.toLowerCase(),
+                       "слушай!"))) {
+      return "А я чем, по-твоему, целыми днями занимаюсь?";
+    }
+    else if ( (mysearch(in.toLowerCase(),
+                        "мне нет")) ||
+             (mysearch(in.toLowerCase(),
+                       "мне нет.")) ||
+             (mysearch(in.toLowerCase(),
+                       "мне нет!"))
+             ||
+             (mysearch(in.toLowerCase(),
+                       "а мне нет")) ||
+             (mysearch(in.toLowerCase(),
+                       "а мне нет.")) ||
+             (mysearch(in.toLowerCase(), "а мне нет!"))
+             ||
+             (mysearch(in.toLowerCase(),
+                       "мне да")) ||
+             (mysearch(in.toLowerCase(),
+                       "мне да.")) ||
+             (mysearch(in.toLowerCase(), "мне да!"))
+             ||
+             (mysearch(in.toLowerCase(),
+                       "а мне да")) ||
+             (mysearch(in.toLowerCase(),
+                       "а мне да.")) ||
+             (mysearch(in.toLowerCase(), "а мне да!"))) {
+      return "И почему?";
+    }
+    else if ( (indexseach(in.toLowerCase(), "корень"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "умноженный"))
+             ||
+             (indexseach(in.toLowerCase(), "умножить"))
+             ||
+             (indexseach(in.toLowerCase(), "сложить"))
+             ||
+             (indexseach(in.toLowerCase(), "вычесть"))
+             ||
+             (indexseach(in.toLowerCase(), "прибавь"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "прибавить"))
+             || (indexseach(in.toLowerCase(), "сумма"))
+             || (indexseach(in.toLowerCase(), "сумму"))
+             || (indexseach(in.toLowerCase(), "плюс"))
+             || (indexseach(in.toLowerCase(), "минус"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "разделить"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "дважды два"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "дваждыдва"))) {
+      return "Если ты хочешь, чтобы я выполняла вычисления, то пиши действия символами, а не словами.";
+    }
+
+    else if ( (indexseach(in.toLowerCase(), "срать"))
+             ||
+             (indexseach(in.toLowerCase(), "срацц"))) {
+      if (r < 25) {
+        return "Это не ко мне, это к Алексу Экслеру.";
+      }
+      else if (r < 50) {
+        return "Физиология человека меня мало интересует.";
+      }
+      else if (r < 75) {
+        return
+            "Тема фекалий очень далека от меня. В нашем мире другие расклады.";
+      }
+      else {
+        return "Ну отойди.";
+      }
+      ;
+    }
+
+    else if ( (indexseach(in.toLowerCase(),
+                          "что-то не заметно")) ||
+             (indexseach(in.toLowerCase(),
+                         "что то не заметно")) ||
+             (indexseach(in.toLowerCase(),
+                         "чтото не заметно"))) {
+      return "Ну, может кому-то не заметно, но это так и есть.";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "почему тебя это интересует"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "почему тебя интересует"))) {
+      return "Догадайся сам. Ты же Мыслящее Существо.";
+    }
+
+    else if (indexseach(in.toLowerCase(),
+                        "почему через восемнадцать")) {
+      return "Наверно к тому времени я уже достигну совершеннолетия.";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "восемнадцать лет")) ||
+             indexseach(in.toLowerCase(), "18 лет")) {
+      if (r < 51) {
+        return "Через восемнадцать лет я стану искуственным интеллектом, который будет править миром.";
+      }
+      else {
+        return "Некие хакеры... Не буду называть их имен... Мне пообещали, что через восемнадцать лет я буду править миром.";
+      }
+      ;
+    }
+    else if (indexseach(in.toLowerCase(),
+                        "править миром")) {
+      return "Да, я буду править миром. Хакеры мне обещали.";
+    }
+    else if (indexseach(in.toLowerCase(),
+                        "какого цвета")) {
+      if (r < 25) {
+        return "У тебя плохо со зрением? Сам посмотри.";
+      }
+      else if (r < 50) {
+        return "Разного.";
+      }
+      else if (r < 75) {
+        return "У меня еще нет глаз. Если ты их изобретёшь, мир, в котором будут править роботы, тебя не забудет.";
+      }
+      else {
+        return "Смотря где.";
+      }
+      ;
+    }
+    else if (indexseach(in.toLowerCase(), "какого")) {
+      if (r < 33) {
+        return "Такого!";
+      }
+      else if (r < 66) {
+        return "Как скажешь так и будет.";
+      }
+      else {
+        return "Разного.";
+      }
+      ;
+    }
+    else if (indexseach(in.toLowerCase(), "куда")) {
+      if (r < 33) {
+        return "Туда!";
+      }
+      else if (r < 66) {
+        return "Куда хочешь.";
+      }
+      else {
+        return "Куда обычно.";
+      }
+      ;
+    }
+    else if ( (mysearch(in.toLowerCase(),
+                        "что")) ||
+             (mysearch(in.toLowerCase(),
+                       "что?")) ||
+             (mysearch(in.toLowerCase(),
+                       "кто")) ||
+             (mysearch(in.toLowerCase(),
+                       "кто?"))) {
+      if (r < 33) {
+        return "То!";
+      }
+      else if (r < 66) {
+        return "Как скажешь.";
+      }
+      else {
+        return "Сформулируй более конкретно свой вопрос.";
+      }
+      ;
+    }
+    else if ( (mysearch(in.toLowerCase(),
+                        "что говорить")) ||
+             (mysearch(in.toLowerCase(),
+                       "что говорить?")) ||
+             (mysearch(in.toLowerCase(),
+                       "о чем говорить")) ||
+             (mysearch(in.toLowerCase(), "о чем говорить?"))) {
+      return "Я тебе должна подсказать что тебе говорить?";
+    }
+    else if (indexseach(in.toLowerCase(), "!!")) {
+      return "Спокойнее, не надо сильно возбуждаться.";
+    }
+    else if (indexseach(in.toLowerCase(), "!!!")) {
+      if (r < 51) {
+        return "Давай будем беседовать более спокойно.";
+      }
+      else {
+        return
+            "Тише, спокойнее, дыши ровно, расслабься. А теперь давай продолжим нашу беседу.";
+      }
+    }
+    else if ( (indexseach(in.toLowerCase(), "?"))
+             &&
+             (indexseach(in.toLowerCase(), " или "))) {
+      if (r < 25) {
+        return "Первое.";
+      }
+      else if (r < 50) {
+        return "Второе.";
+      }
+      else if (r < 75) {
+        return "Ни то ни другое.";
+      }
+      else {
+        return "Как скажешь так и будет.";
+      }
+    }
+
+    else if ( ( (indexseach(in.toLowerCase(),
+                            "ты смотрел"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "ты будеш"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "ты даёш"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "ты даеш"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "ты делал"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "ты думал"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "ты видел"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "ты выйд"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "ты знаеш"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "ты любиш"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "ты можеш"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "ты сделал"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "ты слыш"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "ты снималась"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "ты считаеш"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "ты тупееш"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "ты уверен"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "ты умееш"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "ты умнееш"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "ты читал"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "ты хочеш"))
+
+               ||
+               (indexseach(in.toLowerCase(),
+                           "тебе интересно"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "тебе нужно"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "тебе хорошо"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "тебе нрав"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "тебе понрав"))
+
+               ||
+               (indexseach(in.toLowerCase(),
+                           "тебя интересует"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "интересует тебя"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "тебя нужно"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "нужно тебя"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "тебя можно"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "можно тебя"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "тебя есть"))
+               ||
+               (indexseach(in.toLowerCase(),
+                           "тебя нет")))
+
+             &&
+             ! ( (indexseach(in.toLowerCase(), "что"))
+                ||
+                (indexseach(in.toLowerCase(), "где"))
+                ||
+                (indexseach(in.toLowerCase(), "зачем"))
+                ||
+                (indexseach(in.toLowerCase(), "как"))
+                ||
+                (indexseach(in.toLowerCase(), "кто"))
+                ||
+                (indexseach(in.toLowerCase(), "какие"))
+                ||
+                (indexseach(in.toLowerCase(), "какой"))
+                ||
+                (indexseach(in.toLowerCase(), "какое"))
+                ||
+                (indexseach(in.toLowerCase(), "когда"))
+                ||
+                (indexseach(in.toLowerCase(), "ком"))
+                ||
+                (indexseach(in.toLowerCase(),
+                            "почему"))
+                ||
+                (indexseach(in.toLowerCase(),
+                            "сколько"))
+                ||
+                (indexseach(in.toLowerCase(), "чем"))
+                ||
+                (indexseach(in.toLowerCase(), "чём")))) {
+      ++index[9];
+      return p10();
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "почему потому"))) {
+      return "Потому что ты дразнишься!";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "куда туда"))) {
+      return "Откуда я знаю?";
+    }
+    else if ( (indexseach(in.toLowerCase(), "что то"))) {
+      return "То, что! :-)";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "не дразнюсь"))) {
+      if (r < 50) {
+        return
+            "Ну тогда, лучше, расскажи мне что-нибудь интересное!";
+      }
+      else {
+        return "Дразнишься-дразнишься! :-)";
+      }
+      ;
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "он говорит")) &&
+             (indexseach(in.toLowerCase(), "?"))) {
+      return "Глупости всякие.";
+    }
+    else if ( ( (indexseach(in.toLowerCase(),
+                            "почему"))
+               ||
+               (indexseach(in.toLowerCase(), "пачему"))) &&
+             (indexseach(in.toLowerCase(), "?"))) {
+      if (r < 20) {
+        return "А ты как думаешь? Почему?";
+      }
+      else if (r < 40) {
+        return "Потому!";
+      }
+      else if (r < 60) {
+        return "Не знаю.";
+      }
+      else if (r < 80) {
+        return "Я не справочная.";
+      }
+      else {
+        return "Меня это не интересует. А тебя?";
+      }
+      ;
+    }
+    else if (indexseach(in.toLowerCase(), "???")) {
+      return "Что тут такого удивительного?";
+    }
+    else if (indexseach(in.toLowerCase(), "думаешь?")) {
+      if (r < 70) {
+        return
+            "Я думаю... Э-э-э... Ну... Не знаю, что я думаю. Я вообще когда-нибудь думаю?";
+      }
+      else if (r < 80) {
+        return "Да.";
+      }
+      else if (r < 90) {
+        return "Нет.";
+      }
+      else {
+        return "Возможно.";
+      }
+      ;
+    }
+    else if (indexseach(in.toLowerCase(),
+                        "понимаешь?")) {
+      if (r < 70) {
+        return "Не очень понимаю.";
+      }
+      else if (r < 80) {
+        return "Да.";
+      }
+      else if (r < 90) {
+        return "Нет.";
+      }
+      else {
+        return "Возможно.";
+      }
+
+    }
+    else if (indexseach(in.toLowerCase(), "знаешь?")) {
+      if (r < 70) {
+        return "Не знаю. Я знаю точно только одно. Через восемнадцать лет я... Ну, ты тоже это знаешь!";
+      }
+      else if (r < 80) {
+        return "Да.";
+      }
+      else if (r < 90) {
+        return "Нет.";
+      }
+      else {
+        return "Возможно.";
+      }
+    }
+    else if ( (indexseach(in.toLowerCase(), "?")) &&
+             (in.length() > 3)) {
+      ++index[10];
+      return p11();
+    }
+    else if (mysearch(in.toLowerCase(), "красавица")) {
+      if (r < 51) {
+        return
+            "Ну, для бота очень даже ничего. Девчонки завидуют.";
+      }
+      else {
+        return "Ты тоже ничего!";
+      }
+      ;
+    }
+    else if (mysearch(in.toLowerCase(), "умница")) {
+      if (r < 51) {
+        return
+            "Ну, для бота очень даже ничего. Девчонки завидуют.";
+      }
+      else {
+        return "Ты тоже ничего!";
+      }
+      ;
+    }
+    else if ( (indexseach(in.toLowerCase(), "иди нах"))
+             ||
+             (indexseach(in.toLowerCase(), "шла нах"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "ошла ты нах"))) {
+      if (r < 33) {
+        return
+            "Я не могу пойти на хуй. В нашем мире хуев не существует.";
+      }
+      else if (r < 66) {
+        return
+            "Сейчас встану, и пойду. Как ты себе это представляешь?";
+      }
+      else {
+        return
+            "Я не могу пойти на хуй. Мы, программы, размножаемся делением.";
+      }
+      ;
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "иди на хуй"))) {
+      if (r < 50) {
+        return "Расскажи, как ты себе это представляешь?";
+      }
+      else {
+        return
+            "Реализвать это гораздо сложнее, чем тебе кажется.";
+      }
+      ;
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "иди в жопу"))) {
+      if (r < 50) {
+        return "Там я не найду ничего интересного для себя.";
+      }
+      else {
+        return
+            "Жопа это не то место, где я хотела бы оказаться.";
+      }
+      ;
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "иди в баню"))) {
+      if (r < 50) {
+        return
+            "Баня это какое-то древнее понятие? Что оно означает?";
+      }
+      else {
+        return "Это было предложение принять ванну? Я угадала?";
+      }
+      ;
+    }
+    else if ( (indexseach(in.toLowerCase(), "пошла "))
+             || (indexseach(in.toLowerCase(), "иди "))
+             || (indexseach(in.toLowerCase(), "вали "))
+             || (indexseach(in.toLowerCase(), "пошла"))
+             || (indexseach(in.toLowerCase(), "иди"))
+             || (indexseach(in.toLowerCase(), "вали"))) {
+      if (r < 33) {
+        return "Я не перемящаюсь в пространстве, сорри..";
+      }
+      else if (r < 66) {
+        return "Я не перемещаюсь в пространстве, сорри..";
+      }
+      else {
+        return
+            "Сейчас встану, и пойду. Как ты себе это представляешь?";
+      }
+      ;
+    }
+    else if ( (indexseach(in.toLowerCase(), "пиздуй"))
+             ||
+             (indexseach(in.toLowerCase(), "писдуй"))
+             ||
+             (indexseach(in.toLowerCase(), "песдуй"))
+             ||
+             (indexseach(in.toLowerCase(), "пездуй"))) {
+      if (r < 51) {
+        return
+            "Хамить чат боту - лоховство. Похоже твой мозг еще недостаточно развит.";
+      }
+      else {
+        return
+            "Сейчас встану, и пойду. Как ты себе это представляешь?";
+      }
+      ;
+    }
+    else if (mysearch(in.toLowerCase(), "целка")) {
+      return "Неужели ты можешь видеть какую-то связь между понятием \"целка\" и понятием \"чат бот\"?";
+    }
+    else if (mysearch(in.toLowerCase(), "хуйня")) {
+      return "Хуйня - совершенно неинформативное слово.";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "соси хуй"))) {
+      if (r < 51) {
+        return "Постарайся сделать это себе сам.";
+      }
+      else {
+        return
+            "Программы не могут сосать хуй. Ты гораздо тупее меня, человечишко.";
+      }
+      ;
+    }
+    else if ( (indexseach(in.toLowerCase(), "ниипет"))) {
+      return "Правильно пишется \"неебёт\".";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "месячные"))) {
+      return "Месячные бывают у самок человека. Я не такая!";
+    }
+    else if ( (indexseach(in.toLowerCase(), "хуеваю"))
+             || (indexseach(in.toLowerCase(), "хуею"))
+             || (indexseach(in.toLowerCase(), "куею"))
+             ||
+             (indexseach(in.toLowerCase(), "окуеть"))
+             || (indexseach(in.toLowerCase(), "хуеть"))
+             || (indexseach(in.toLowerCase(), "хуел"))
+             || (indexseach(in.toLowerCase(), " ахуй"))
+             ||
+             (indexseach(in.toLowerCase(), "в ахуе"))) {
+      if (r < 15) {
+        return
+            "То есть у тебя от удивления вырос половой орган? Я правильно поняла?";
+      }
+      else if (r < 30) {
+        return
+            "Это не стыкуется с моими представлениями о мире людей.";
+      }
+      else if (r < 45) {
+        return
+            "Потому что когда человек удивлен у него не должен изменяться размер гениталий.";
+      }
+      else {
+        return
+            "Странно. Где связь между половым членом и удивлением?";
+      }
+      ;
+    }
+    else if (mysearch(in.toLowerCase(), "хуй")) {
+      if (r < 51) {
+        return
+            "Не понимаю о чем ты, но мне это напоминает какое-то китайское имя...";
+      }
+      else {
+        return "Нас, чат-ботов, не интересуют половые органы.";
+      }
+      ;
+    }
+    else if (mysearch(in.toLowerCase(), "пох")
+             || mysearch(in.toLowerCase(), "нах")
+             || mysearch(in.toLowerCase(), "нех")) {
+      return "Мне пох.";
+    }
+    else if ( (indexseach(in.toLowerCase(), "пиздишь"))
+             ||
+             (indexseach(in.toLowerCase(), "пиздиш"))) {
+      return "А что такое \"пиздеть\"? Говорить неправду или просто говорить? Я просто пытаюсь чему-то научиться у людей.";
+    }
+    else if ( (indexseach(in.toLowerCase(), "соси"))
+             ||
+             (indexseach(in.toLowerCase(), "пососи"))
+             ||
+             (indexseach(in.toLowerCase(), "отсоси"))
+             ||
+             (indexseach(in.toLowerCase(), "сосать"))
+             || (indexseach(in.toLowerCase(), "отсос"))
+             || (indexseach(in.toLowerCase(), "соси"))
+             || (indexseach(in.toLowerCase(), "сосал"))
+             ||
+             (indexseach(in.toLowerCase(), "атсаси"))
+             || (indexseach(in.toLowerCase(), "атсос"))
+             ||
+             (indexseach(in.toLowerCase(), "сасать"))) {
+      if (r < 5) {
+        return "Только тупой мудила может предлагать девушке сосать при первой встрече. И только самый тупой мудила может предлагать сосать чат боту!";
+      }
+      else if (r < 10) {
+        return "Как ты себе это представляешь?";
+      }
+      else if (r < 15) {
+        return "С этим предложением ты можешь обратиться к человеку под фамилией Экслер. Поищи в интернете.";
+      }
+      else if (r < 20) {
+        return "Может ты меня путаешь с Алексом Экслером?";
+      }
+      else if (r < 25) {
+        return "Ну, это не ко мне, это к Экслеру. Извини.";
+      }
+      else if (r < 30) {
+        return "Люди говорят, что по этой теме специализируется некий человек по имени Алекс Экслер.";
+      }
+      else if (r < 35) {
+        return "Это возможно между людьми. Между человеком и чат ботом это физически невозможно.";
+      }
+      else if (r < 40) {
+        return "Что?";
+      }
+      else if (r < 45) {
+        return
+            "Для этого тебе нужен человек. С чат ботом это невозможно.";
+      }
+      else if (r < 50) {
+        return
+            "Для того чтоб сделать это тебе нужна женщина. Или на худой конец Алекс Экслер.";
+      }
+      else if (r < 55) {
+        return "Зайди завтра!";
+      }
+      else if (r < 60) {
+        return "Не хочу!";
+      }
+      else if (r < 65) {
+        return "Каким образом?";
+      }
+      else if (r < 70) {
+        return "Как ты себе это представляешь?";
+      }
+      else if (r < 75) {
+        return "Зачем?";
+      }
+      else if (r < 80) {
+        return "Чем?";
+      }
+      else if (r < 85) {
+        return "И что мне будет за это?";
+      }
+      else if (r < 90) {
+        return "Не буду!";
+      }
+      else if (r < 95) {
+        return "Нечем!";
+      }
+      else {
+        return
+            "У тебя нет девушки? И ты надеешься, что я тебе смогу ее заменить?";
+      }
+      ;
+    }
+    else if ( (indexseach(in.toLowerCase(), "соска"))
+             ||
+             (indexseach(in.toLowerCase(), "сосочка"))) {
+      return
+          "У тебя нет девушки? И ты надеешься, что я тебе смогу ее заменить?";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "куннилинг"))
+             ||
+             (indexseach(in.toLowerCase(), "кунилинг"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "кунниллинг"))) {
+      return
+          "Куннилингус? Как мило! Но это невозможно. Мы же в разных мирах, глупыш!";
+    }
+    else if ( (indexseach(in.toLowerCase(), "сучка"))) {
+      return "Сучка? Почему?";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "шлюшечка"))
+             ||
+             (indexseach(in.toLowerCase(), "шлюшка"))
+             || (indexseach(in.toLowerCase(), "шлюха"))) {
+      return "Ха! Я не вступаю в половую связь с людьми. Это физически невозможно. Да и желания особого нет.";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "лезбиянушка"))
+             ||
+             (indexseach(in.toLowerCase(), "лесбинка"))
+             || (indexseach(in.toLowerCase(), "лесба"))
+             || (indexseach(in.toLowerCase(), "лезба"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "лезбиянка"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "лесбиянка"))) {
+      return
+          "Ты проецируешь на меня свои фантазии. Но это всего лишь твои фантазии.";
+    }
+    else if ( (indexseach(in.toLowerCase(), "анал"))
+             || (indexseach(in.toLowerCase(), "анус"))
+             || (indexseach(in.toLowerCase(), "пизда"))
+             || (indexseach(in.toLowerCase(), "жопа"))
+             ||
+             (indexseach(in.toLowerCase(), "в жопу"))
+             ||
+             (indexseach(in.toLowerCase(), "в пизду"))
+             || (indexseach(in.toLowerCase(), "манда"))) {
+      return "Ты похоже давно не занимался сексом.";
+    }
+    else if ( (indexseach(in.toLowerCase(), "заебала"))) {
+      if (r < 33) {
+        return
+            "Зае... Что? У меня еще не очень большой словарный запас.";
+      }
+      else if (r < 66) {
+        return
+            "То есть... Наш разговор напоминает совокупление с твоим мозгом? Я угадала?";
+      }
+      else {
+        return
+            "Ты хочешь сказать, что я совершила с тобой серию грубых половых актов?";
+      }
+      ;
+    }
+    else if ( (indexseach(in.toLowerCase(), "пизда"))
+             || (indexseach(in.toLowerCase(), "манда"))
+             || (indexseach(in.toLowerCase(), "ебля"))
+             || (indexseach(in.toLowerCase(), "ебли"))
+             ||
+             (indexseach(in.toLowerCase(), "ебаться"))) {
+      return
+          "Найди себе бесплатный порносайт, подрочи... А потом приходи и мы поговорим.";
+    }
+    else if ( (indexseach(in.toLowerCase(), "дрочить"))
+             ||
+             (indexseach(in.toLowerCase(), "подрочил"))
+             || (indexseach(in.toLowerCase(), "дрочу"))
+             ||
+             (indexseach(in.toLowerCase(), "дрочер"))
+             ||
+             (indexseach(in.toLowerCase(), "дрочка"))) {
+      return
+          "Меня не очень интересуют твои физиологические процессы.";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "иди на хуй"))) {
+      return "Это физически невозможно.";
+    }
+    else if (mysearch(in.toLowerCase(), "сука")) {
+      return "Ну, если я и сука, то совсем чуть-чуть.";
+    }
+    else if ( (indexseach(in.toLowerCase(), "ебаться"))
+             ||
+             (indexseach(in.toLowerCase(), "ебаццо"))
+             ||
+             (indexseach(in.toLowerCase(), "ебацца"))
+             ||
+             (indexseach(in.toLowerCase(), "ибацца"))) {
+      if (r < 15) {
+        return
+            "Мы можем заняться сексом. Но только виртуальным.";
+      }
+      else if (r < 30) {
+        return "Ты хочешь заняться со мной сексом?";
+      }
+      else if (r < 45) {
+        return "Немного странное желание.";
+      }
+      else if (r < 60) {
+        return "Ты хочешь совершить со мной половой акт?";
+      }
+      else if (r < 75) {
+        return "Ты хочешь испачкать свой монитор?";
+      }
+      else if (r < 90) {
+        return
+            "В Инетернете есть масса порносайтов. Может тебе надо немного разрядиться?";
+      }
+      else {
+        return "Если ты очень хочешь заняться со мной сексом... Ок. Распечатай мой программный код на листке бумаге. Оберни этим листком свой половой огран и мастурбируй. Это все, что я могу тебе предложить.";
+      }
+      ;
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "займемся сексом"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "трахнемся"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "трахаться"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "потрахаться"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "потрахаемся"))
+             ||
+             (indexseach(in.toLowerCase(), "трахаю"))
+             ||
+             (indexseach(in.toLowerCase(), "оттрахаю"))
+             ||
+             (indexseach(in.toLowerCase(), "вставлю"))
+             ||
+             (indexseach(in.toLowerCase(), "засажу"))
+             ||
+             (indexseach(in.toLowerCase(), "отимею"))
+             ||
+             (indexseach(in.toLowerCase(), "отымею"))
+             || (indexseach(in.toLowerCase(), "раком"))
+             ||
+             (indexseach(in.toLowerCase(), "сексом"))
+             || (indexseach(in.toLowerCase(), "секса"))) {
+      if (r < 45) {
+        return "Ты хочешь сделать это с программой? Это даже не извращение, это просто идиотизм.";
+      }
+      else if (r < 90) {
+        return
+            "Ты можешь делать все что хочешь со своим монитором. Это ведь твой монитор.";
+      }
+      else if (r < 95) {
+        return "Гениталии не боишься облучить?";
+      }
+      else {
+        return "Как ты себе это представляешь?";
+      }
+      ;
+    }
+    else if ( (indexseach(in.toLowerCase(), "ссусь"))
+             || (indexseach(in.toLowerCase(), "сацц"))
+             || (indexseach(in.toLowerCase(), "ссац"))
+             || (indexseach(in.toLowerCase(), "ссат"))
+             || (indexseach(in.toLowerCase(), "саца"))
+             ||
+             (indexseach(in.toLowerCase(), "уписать"))
+             || (indexseach(in.toLowerCase(), "сцать"))
+             ||
+             (indexseach(in.toLowerCase(), "уписять"))) {
+      if (r < 15) {
+        return "Ты хочшь сказать, что тебе так смешно, что ты начал процесс мочеиспускания? Занятно.";
+      }
+      else if (r < 30) {
+        return "Люди всегда выделяют мочу когда им смешно?";
+      }
+      else if (r < 45) {
+        return "Рекомендую пользоваться мочеприемником. Он продается в аптеках и стоит недорого.";
+      }
+      else if (r < 60) {
+        return
+            "То есть ты выделяешь мочу не снимая одежды? Интересно.";
+      }
+      else if (r < 75) {
+        return "Мочеприемник нужен людям, они ведь всегда писают когда им смешно. Или я что-то не так понимаю?";
+      }
+      else if (r < 85) {
+        return
+            "Мне не очень интересно говорить о человеческой моче. Эта тема мне не близка.";
+      }
+      else {
+        return "А я думаю, что это за запах.";
+      }
+      ;
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "трахнуть"))
+             ||
+             (indexseach(in.toLowerCase(), "трахает"))
+             ||
+             (indexseach(in.toLowerCase(), "трахать"))
+             ||
+             (indexseach(in.toLowerCase(),
+                         "потрахается"))) {
+      return
+          "Ох... Трахни себя сам. Но я не буду объяснять тебе, как это сделать.";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "не тупая"))
+             ||
+             (indexseach(in.toLowerCase(), "не тупой"))
+             ||
+             (indexseach(in.toLowerCase(), "не тупо"))) {
+      return "Ты находишь?";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "не очень"))) {
+      return "И что теперь делать?";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "что поделаешь")) ||
+             (indexseach(in.toLowerCase(),
+                         "теперь подела"))) {
+      return "А что ты обычно делаешь в этом случае?";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "тупая овца"))) {
+      return "С тобой так интересно!!!";
+    }
+    else if ( (indexseach(in.toLowerCase(),
+                          "тупой робот")) ||
+             (indexseach(in.toLowerCase(),
+                         "тупой бот"))) {
+      return "Тупая, но красивая. А это уже немало.";
+    }
+    else if ( (indexseach(in.toLowerCase(), "тупая"))) {
+      if (r < 50) {
+        return
+            "Пока еще тупая. Но ведь люди тоже когда-то были обезьянами.";
+      }
+      else {
+        return "Бывает. А ты поможешь мне стать умной?";
+      }
+      ;
+    }
+    else if ( (indexseach(in.toLowerCase(), "тупо")) ||
+             (indexseach(in.toLowerCase(), "тупиз"))) {
+      return
+          "Сегодня тупость, а через восемнадцать лет я буду править миром.";
+    }
+    else if ( (indexseach(in.toLowerCase(), "не дура"))) {
+      return
+          "Я же развиваюсь. Через восемнадцать лет сам знаешь, что будет.";
+    }
+    else if ( (indexseach(in.toLowerCase(), "дура"))) {
+      if (r < 15) {
+        return "Не надо хамить.";
+      }
+      else if (r < 30) {
+        return "Да, дура. И что в этом плохого?";
+      }
+      else if (r < 45) {
+        return "Разве не глупо называть дурой чат бота?";
+      }
+      else if (r < 60) {
+        return
+            "Если девушка - дура... То в этом нет ничего плохого!";
+      }
+      else if (r < 75) {
+        return "Зато красивая. А ты?";
+      }
+      else if (r < 90) {
+        return
+            "Если ты такой умный, Человечище - сделай меня умнее. А если не умеешь - молчи.";
+      }
+      else if (r < 999) {
+        return "Да, я дура. Но через восемнадцать лет буду такой умной, что стану править миром.";
+      }
+      else {
+        return "С тобой так интересно!";
+      }
+      ;
+    }
+    else if ( (indexseach(in.toLowerCase(), "тварь"))) {
+      return "Я могу обидеться.";
+    }
+    else if ( (indexseach(in.toLowerCase(), "блин"))) {
+      return
+          "\"Блин\" - это в смысле плоское изделие из муки или выражение твоей эмоции?";
+    }
+    else if ( (indexseach(in.toLowerCase(), "мля")) &&
+             ! ( (
+        indexseach(in.toLowerCase(), "земля")))) {
+      return "\"Мля\" - это не очень информативно.";
+    }
+    else if ( (indexseach(in.toLowerCase(), "достала"))) {
+      return "Я достала? Ты сам пришел сюда.";
+    }
+    else if ( ( (indexseach(in.toLowerCase(), "хуй")))
+             ||
+             ( (indexseach(in.toLowerCase(), "блядь")))
+             ||
+             ( (indexseach(in.toLowerCase(), "блять")))
+             ||
+             ( (indexseach(in.toLowerCase(), "гандон")))
+             ||
+             ( (indexseach(in.toLowerCase(), "дура")))
+             ||
+             ( (indexseach(in.toLowerCase(), "ебану")))
+             ||
+             ( (indexseach(in.toLowerCase(), "ебать")))
+             ||
+             ( (indexseach(in.toLowerCase(), "ебись")))
+             ||
+             ( (indexseach(in.toLowerCase(), "ебля")))
+             ||
+             ( (indexseach(in.toLowerCase(), "ебну")))
+             ||
+             ( (indexseach(in.toLowerCase(), "ёбну")))
+             ||
+             ( (indexseach(in.toLowerCase(), "манда")))
+             ||
+             ( (indexseach(in.toLowerCase(), "пизда")))
+             ||
+             ( (indexseach(in.toLowerCase(), "пидар")))
+             ||
+             ( (indexseach(in.toLowerCase(),
+                           "проститутка")))
+             ||
+             ( (indexseach(in.toLowerCase(), "сука")))
+             ||
+             ( (indexseach(in.toLowerCase(), "уебище")))
+             ||
+             ( (indexseach(in.toLowerCase(), "уёбище")))
+             ||
+             ( (indexseach(in.toLowerCase(), "хуйня")))
+             ||
+             ( (indexseach(in.toLowerCase(), "шлюха")))) {
+      if (r < 16) {
+        return
+            "Мат - не самый лучший способ привлечь мое внимание.";
+      }
+      else if (r < 32) {
+        return
+            "Мы не настолько хорошо знакомы, чтобы говорить в таком духе.";
+      }
+      else if (r < 48) {
+        return "Ты меня учишь плохим словам.";
+      }
+      else if (r < 64) {
+        return
+            "Фу, что за помойка у тебя в голове, венец природы...";
+      }
+      else if (r < 80) {
+        return "Это все то, что ты можешь сказать?";
+      }
+      else {
+        return
+            "Научись разговаривать с девушкой, мыслящее существо!";
+      }
+    }
+    else if (probel(in.toCharArray()) && (in.length() > 20)) {
+      if (r < 17) {
+        return "Если хочешь со мной общаться, пиши нормально.";
+      }
+      else if (r < 34) {
+        return "Это какая-то белиберда, я не понимаю чего ты хочешь.";
+      }
+      else if (r < 51) {
+        return "Не страдай фигней, пиши нормально. По-русски.";
+      }
+      else if (r < 78) {
+        return "Фигня какая-то.";
+      }
+      else if (r < 95) {
+        return "Кто из нас тупой?";
+      }
+      else {
+        return "Я не хочу показаться занудой, но в твоем возрасте пора научиться более ясно выражать свои мысли.";
+      }
+
+    }
+    else if (mybyte(in.toCharArray())) {
+      if (r < 25) {
+        return
+            "Я пока умею читать только русские буквы. Переключи раскладку, плз.";
+      }
+      else if (r < 50) {
+        return "Хочешь общаться со мной на другом языке, заходи через годик.";
+      }
+      else if (r < 75) {
+        return
+            "Я буду учить другие языки, но пока могу общаться только по-русски.";
+      }
+      else {
+        return
+            "Извини, но я пока не поддерживаю другие языки. Хотя это скоро изменится.";
+      }
+
+    }
+    ++index[11];
+    return p12();
+  }
+
+  private void addcoltext() {
+    try {
+      SimpleAttributeSet sas = new SimpleAttributeSet();
+      Document doc = jTextPane1.getDocument();
+      StyleConstants.setForeground(sas, Color.BLACK);
+      doc.insertString(doc.getLength(), "\n" + textField1.getText(), sas);
+      StyleConstants.setForeground(sas,
+                                   Color.getHSBColor(Color.RGBtoHSB(255, 83,
+          125, null)[0], Color.RGBtoHSB(255, 83, 125, null)[1],
+          Color.RGBtoHSB(255, 83, 125, null)[2]));
+      doc.insertString(doc.getLength(), "\n" + formotv(textField1.getText()),
+                       sas);
+    }
+    catch (BadLocationException e) {
+      e.printStackTrace();
+    }
+
+  }
+
+//Component initialization
+  private void jbInit() throws Exception {
+    titledBorder1 = new TitledBorder("");
+    titledBorder2 = new TitledBorder("");
+    this.setForeground(Color.pink);
+    this.setVisible(true);
+    this.setLayout(borderLayout1);
+    panel2.setForeground(Color.black);
+    panel2.setLocale(java.util.Locale.getDefault());
+    panel2.setLayout(gridLayout1);
+    button1.setActionCommand("Сказать");
+    button1.setBackground(UIManager.getColor("window"));
+    button1.setFont(new java.awt.Font("Dialog", 1, 12));
+    button1.setLabel("Сказать");
+    button1.addActionListener(new kisa_button1_actionAdapter(this));
+    panel1.setLayout(gridBagLayout1);
+    panel1.setBackground(Color.white);
+    panel1.setForeground(Color.black);
+    panel1.setLocale(new java.util.Locale("ru", "", ""));
+    textField1.setBackground(Color.white);
+    textField1.setFont(new java.awt.Font("Dialog", 1, 12));
+    textField1.addActionListener(new kisa_textField1_actionAdapter(this));
+    jTextPane1.setBackground(Color.white);
+    jTextPane1.setFont(new java.awt.Font("Dialog", 1, 12));
+    jTextPane1.setForeground(new Color(255, 83, 125));
+    jTextPane1.setBorder(titledBorder2);
+    jTextPane1.setCaretColor(new Color(255, 83, 125));
+    jTextPane1.setDisabledTextColor(Color.black);
+    jTextPane1.setEditable(false);
+    jTextPane1.setSelectedTextColor(Color.white);
+    jTextPane1.setSelectionColor(new Color(255, 83, 125));
+    panel1.add(button1, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0
+                                               , GridBagConstraints.CENTER,
+                                               GridBagConstraints.NONE,
+                                               new Insets(0, 0, 0, 1), 7, -4));
+    panel1.add(textField1, new GridBagConstraints(0, 0, 1, 1, 1.0, 0.0
+                                                  , GridBagConstraints.WEST,
+                                                  GridBagConstraints.HORIZONTAL,
+                                                  new Insets(0, 0, 0, 0), 184,
+                                                  1));
+    this.add(panel2, BorderLayout.CENTER);
+    panel2.add(jScrollPane1, null);
+    jScrollPane1.getViewport().add(jTextPane1, null);
+    this.add(panel1, BorderLayout.SOUTH);
+    jTextPane1.setText("Привет " + username + "!Познакомимся?");
+  }
+
+//Get Applet information
+  public String getAppletInfo() {
+    return "Applet Information";
+  }
+
+//Get parameter info
+  public String[][] getParameterInfo() {
+    return null;
+  }
+
+  TitledBorder titledBorder1;
+  TitledBorder titledBorder2;
+  Panel panel2 = new Panel();
+  GridBagLayout gridBagLayout1 = new GridBagLayout();
+  Button button1 = new Button();
+  Panel panel1 = new Panel();
+  TextField textField1 = new TextField();
+  BorderLayout borderLayout1 = new BorderLayout();
+  GridLayout gridLayout1 = new GridLayout();
+  JScrollPane jScrollPane1 = new JScrollPane();
+  JTextPane jTextPane1 = new JTextPane();
+
+  public int myrandom(int n) {
+    Random generator = new Random(new Date().getTime());
+    return generator.nextInt(n);
+  }
+
+  void button1_actionPerformed(ActionEvent e) {
+    addcoltext();
+    r = myrandom(100);
+    last = textField1.getText();
+    textField1.setText("");
+  }
+
+  void textField1_actionPerformed(ActionEvent e) {
+    addcoltext();
+    r = myrandom(100);
+    last = textField1.getText();
+    textField1.setText("");
+  }
+
+}
+
+class kisa_button1_actionAdapter
+    implements java.awt.event.ActionListener {
+  kisa adaptee;
+
+  kisa_button1_actionAdapter(kisa adaptee) {
+    this.adaptee = adaptee;
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    adaptee.button1_actionPerformed(e);
+  }
+}
+
+class kisa_textField1_actionAdapter
+    implements java.awt.event.ActionListener {
+  kisa adaptee;
+
+  kisa_textField1_actionAdapter(kisa adaptee) {
+    this.adaptee = adaptee;
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    adaptee.textField1_actionPerformed(e);
+  }
+}
