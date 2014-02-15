@@ -1,0 +1,18 @@
+c:\users\akim\documents\visual studio 2012\Projects\XvsO\XvsO\bin\Debug\XvsO.exe.config
+c:\users\akim\documents\visual studio 2012\Projects\XvsO\XvsO\bin\Debug\XvsO.exe
+c:\users\akim\documents\visual studio 2012\Projects\XvsO\XvsO\bin\Debug\XvsO.pdb
+c:\users\akim\documents\visual studio 2012\Projects\XvsO\XvsO\obj\Debug\XvsO.csprojResolveAssemblyReference.cache
+c:\users\akim\documents\visual studio 2012\Projects\XvsO\XvsO\obj\Debug\XvsO.Form1.resources
+c:\users\akim\documents\visual studio 2012\Projects\XvsO\XvsO\obj\Debug\XvsO.Properties.Resources.resources
+c:\users\akim\documents\visual studio 2012\Projects\XvsO\XvsO\obj\Debug\XvsO.csproj.GenerateResource.Cache
+c:\users\akim\documents\visual studio 2012\Projects\XvsO\XvsO\obj\Debug\XvsO.exe
+c:\users\akim\documents\visual studio 2012\Projects\XvsO\XvsO\obj\Debug\XvsO.pdb
+C:\Users\Akim\Documents\VisualStudio2012\Projects\XvsO\XvsO\bin\Debug\XvsO.exe.config
+C:\Users\Akim\Documents\VisualStudio2012\Projects\XvsO\XvsO\obj\Debug\XvsO.exe
+C:\Users\Akim\Documents\VisualStudio2012\Projects\XvsO\XvsO\obj\Debug\XvsO.pdb
+C:\Users\Akim\Documents\VisualStudio2012\Projects\XvsO\XvsO\bin\Debug\XvsO.exe
+C:\Users\Akim\Documents\VisualStudio2012\Projects\XvsO\XvsO\bin\Debug\XvsO.pdb
+C:\Users\Akim\Documents\VisualStudio2012\Projects\XvsO\XvsO\obj\Debug\XvsO.csprojResolveAssemblyReference.cache
+C:\Users\Akim\Documents\VisualStudio2012\Projects\XvsO\XvsO\obj\Debug\XvsO.Form1.resources
+C:\Users\Akim\Documents\VisualStudio2012\Projects\XvsO\XvsO\obj\Debug\XvsO.Properties.Resources.resources
+C:\Users\Akim\Documents\VisualStudio2012\Projects\XvsO\XvsO\obj\Debug\XvsO.csproj.GenerateResource.Cache
